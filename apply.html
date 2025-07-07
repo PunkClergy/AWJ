@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加入我们 - 安维深科技</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航 */
+        .header {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 55px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #4a9df7;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #4a9df7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Banner */
+        .join-banner {
+            height: 500px;
+            background: linear-gradient(135deg, rgba(74, 157, 247, 0.9) 0%, rgba(42, 113, 210, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .banner-content {
+            max-width: 1000px;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .banner-content h1 {
+            font-size: 56px;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .banner-content p {
+            font-size: 22px;
+            color: #e6e6e6;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* 主内容区 */
+        .join-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            color: #222;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: #4a9df7;
+            border-radius: 3px;
+        }
+
+        .section-desc {
+            max-width: 800px;
+            margin: 30px auto 0;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 合作优势 */
+        .benefits-section {
+            margin: 80px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f0f4f8;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.2);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: #4a9df7;
+            transition: all 0.4s;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            background: #4a9df7;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .benefit-title {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .benefit-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 合作流程 */
+        .process-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            border-radius: 20px;
+            padding: 80px 60px;
+            margin: 80px 0;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            width: calc(25% - 20px);
+            background: white;
+            border-radius: 16px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            margin-bottom: 60px;
+            transition: all 0.4s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.25);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #4a9df7;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .step-icon {
+            font-size: 40px;
+            color: #4a9df7;
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 申请表单 */
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4a9df7, #2a71d2);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-title {
+            font-size: 36px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .form-subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #f8fafc;
+        }
+
+        .form-control:focus {
+            border-color: #4a9df7;
+            box-shadow: 0 0 0 3px rgba(74, 157, 247, 0.2);
+            outline: none;
+            background: white;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: #4a9df7;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .submit-btn:hover {
+            background: #3a8de6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(74, 157, 247, 0.4);
+        }
+
+        .submit-btn i {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            margin: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid #f0f4f8;
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #222;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            color: #4a9df7;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            color: #555;
+            line-height: 1.7;
+            background: #f8fafc;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 25px 30px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* 联系区域 */
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            border-radius: 20px;
+            padding: 60px;
+            margin: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-desc {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #4a9df7;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #222;
+            color: #aaa;
+            padding: 80px 0 30px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a9df7;
+            display: inline-block;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            color: #aaa;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #4a9df7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #aaa;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #4a9df7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .step-card {
+                width: calc(50% - 20px);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 40px;
+            }
+
+            .banner-content p {
+                font-size: 18px;
+            }
+            
+            .process-section {
+                padding: 50px 30px;
+            }
+            
+            .form-section {
+                padding: 40px 30px;
+            }
+            
+            .contact-section {
+                padding: 40px 30px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+            
+            .step-card {
+                width: 100%;
+            }
+            
+            .join-banner {
+                height: 450px;
+            }
+            
+            .form-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./image/logo.png" alt="安维深科技">
+                安维深科技
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#" class="active">合作申请</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="join-banner">
+        <div class="banner-content">
+            <h1>成为安维深合作伙伴</h1>
+            <p>与智能家居领导者携手，共创未来智慧生活新生态</p>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <div class="join-container">
+
+        <!-- 合作流程 -->
+        <div class="process-section">
+            <div class="section-header">
+                <h2 class="section-title">合作流程</h2>
+                <p class="section-desc">简单四步，开启与安维深的合作之旅</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="step-title">提交申请</h3>
+                    <p class="step-desc">填写在线申请表，提供您的公司信息和合作意向。</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-title">初步沟通</h3>
+                    <p class="step-desc">我们的合作伙伴经理将与您联系，了解详细需求和合作可能性。</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="step-title">协议签署</h3>
+                    <p class="step-desc">双方确认合作细节，正式签署合作伙伴协议。</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="step-title">启动合作</h3>
+                    <p class="step-desc">获得专属支持资源，开始市场拓展和业务合作。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 申请表单 -->
+        <div class="form-section">
+            <div class="form-header">
+                <h2 class="form-title">合作伙伴申请</h2>
+                <p class="form-subtitle">请填写以下申请表，我们的合作伙伴经理将在1-3个工作日内与您联系</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="partnerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyName">公司名称 <span class="required">*</span></label>
+                            <input type="text" id="companyName" class="form-control" placeholder="请输入公司全称" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="website">公司官网</label>
+                            <input type="url" id="website" class="form-control" placeholder="https://">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">联系人姓名 <span class="required">*</span></label>
+                            <input type="text" id="contactName" class="form-control" placeholder="请输入姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="position">职位 <span class="required">*</span></label>
+                            <input type="text" id="position" class="form-control" placeholder="请输入职位" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">联系电话 <span class="required">*</span></label>
+                            <input type="tel" id="phone" class="form-control" placeholder="请输入联系电话" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">电子邮箱 <span class="required">*</span></label>
+                            <input type="email" id="email" class="form-control" placeholder="请输入电子邮箱" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyType">公司类型 <span class="required">*</span></label>
+                        <select id="companyType" class="form-control" required>
+                            <option value="">请选择公司类型</option>
+                            <option value="technology">技术提供商</option>
+                            <option value="distribution">渠道分销商</option>
+                            <option value="integration">系统集成商</option>
+                            <option value="developer">房地产开发商</option>
+                            <option value="design">室内设计公司</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cooperationType">希望的合作类型 <span class="required">*</span></label>
+                        <select id="cooperationType" class="form-control" required>
+                            <option value="">请选择合作类型</option>
+                            <option value="product">产品销售</option>
+                            <option value="solution">解决方案合作</option>
+                            <option value="technology">技术合作</option>
+                            <option value="oem">OEM/ODM合作</option>
+                            <option value="strategic">战略投资</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="businessScope">主营业务范围 <span class="required">*</span></label>
+                        <textarea id="businessScope" class="form-control" placeholder="请描述贵公司的主营业务和核心优势" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cooperationExpectation">合作期望 <span class="required">*</span></label>
+                        <textarea id="cooperationExpectation" class="form-control" placeholder="请描述您希望与安维深达成的具体合作内容" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        提交申请 <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">常见问题</h2>
+                <p class="section-desc">关于合作伙伴计划的常见问题解答</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        成为安维深合作伙伴需要什么条件？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我们欢迎各类企业加入合作伙伴计划，主要条件包括：</p>
+                        <ul>
+                            <li>合法注册的企业实体</li>
+                            <li>在相关领域有至少2年从业经验</li>
+                            <li>具备一定的技术能力或市场资源</li>
+                            <li>认同安维深的企业价值观和产品理念</li>
+                            <li>愿意投入资源推广安维深产品解决方案</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        合作伙伴计划有哪些级别？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我们的合作伙伴计划分为三个级别：</p>
+                        <ol>
+                            <li><strong>授权合作伙伴</strong>：完成基础认证，获得销售授权</li>
+                            <li><strong>高级合作伙伴</strong>：完成技术认证，具备解决方案交付能力</li>
+                            <li><strong>战略合作伙伴</strong>：深度合作，共同开发行业解决方案</li>
+                        </ol>
+                        <p>不同级别享受不同的支持政策和收益分成。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        申请后多久能得到回复？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我们将在收到申请后的1-3个工作日内与您联系。如果您提交的信息完整准确，审核流程通常需要5-7个工作日。</p>
+                        <p>在特殊时期（如展会季或新产品发布期间），审核时间可能会延长至10个工作日。您可以通过合作伙伴热线400-888-9999查询申请进度。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        合作伙伴可以获得哪些支持？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>安维深为合作伙伴提供全方位的支持：</p>
+                        <ul>
+                            <li>技术培训与认证</li>
+                            <li>市场营销基金和活动支持</li>
+                            <li>销售工具和演示设备</li>
+                            <li>专属客户经理支持</li>
+                            <li>优先产品和技术支持</li>
+                            <li>合作伙伴门户网站资源</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系区域 -->
+        <div class="contact-section">
+            <h2 class="contact-title">需要更多信息？</h2>
+            <p class="contact-desc">我们的合作伙伴团队随时为您提供咨询和支持，请通过以下方式联系我们</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>400-888-9999</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>partner@avision.com</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <div>微信：Avision_Partner</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>产品中心</h4>
+                    <ul>
+                        <li><a href="product.html">产品介绍</a></li>
+                        <li><a href="manual.html">使用技巧</a></li>
+                        <li><a href="patent.html">产品专利</a></li>
+                        <li><a href="new-product.html">新品上市</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                      <ul>
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="news.html">新闻中心</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="partners.html">合作案例</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 深圳市南山区科技园</li>
+                        <li><i class="fas fa-phone"></i> 400-888-8888</li>
+                        <li><i class="fas fa-envelope"></i> contact@avision.com</li>
+                        <li>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-weixin"></i></a>
+                                <a href="#"><i class="fab fa-weibo"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>版权所有 © 安维深科技 2010-2025。保留一切权利。粤ICP备12345678号</p>
+                <p style="margin-top: 15px;">隐私政策 | 使用条款 | 法律声明 | 网站地图</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 表单提交处理
+        const partnerForm = document.getElementById('partnerForm');
+        
+        partnerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const companyName = document.getElementById('companyName').value;
+            const contactName = document.getElementById('contactName').value;
+            const email = document.getElementById('email').value;
+            
+            // 显示成功消息
+            alert(`感谢您的申请，${contactName}！\n我们已收到${companyName}的合作伙伴申请，我们的团队将尽快通过${email}与您联系。`);
+            
+            // 重置表单
+            partnerForm.reset();
+        });
+        
+        // FAQ 切换功能
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', function() {
+                // 关闭其他打开的FAQ
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // 切换当前FAQ
+                item.classList.toggle('active');
+            });
+        });
+        
+        // 卡片悬停效果
+        const cards = document.querySelectorAll('.benefit-card, .step-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // 滚动到表单
+        const scrollDown = document.querySelector('.scroll-down');
+        scrollDown.addEventListener('click', function() {
+            document.querySelector('.form-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+</html>

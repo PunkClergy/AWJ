@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盈利模式 - 安维深科技</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 导航 */
+        .header {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 55px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #4a9df7;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #4a9df7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Banner */
+        .revenue-banner {
+            height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .banner-content h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 20px;
+            color: #e6e6e6;
+            margin-bottom: 30px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-value {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #4a9df7;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 主内容区 */
+        .revenue-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #222;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #4a9df7;
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 盈利模型 */
+        .models-section {
+            margin: 60px 0;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.25);
+        }
+
+        .model-icon {
+            font-size: 48px;
+            color: #4a9df7;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .model-card:hover .model-icon {
+            color: #fff;
+        }
+
+        .model-title {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .model-card:hover .model-title {
+            color: #fff;
+        }
+
+        .model-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .model-card:hover .model-desc {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .model-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, #4a9df7 0%, #2a6bc5 100%);
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+
+        .model-card:hover::before {
+            height: 100%;
+        }
+
+        .revenue-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-box {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-box-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4a9df7;
+        }
+
+        .stat-box-label {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* 收入图表 */
+        .chart-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            border-radius: 16px;
+            padding: 60px;
+            margin: 60px 0;
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 400px;
+            position: relative;
+        }
+
+        /* 增长模型 */
+        .growth-section {
+            margin: 60px 0;
+        }
+
+        .growth-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .growth-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            border-left: 4px solid #4a9df7;
+        }
+
+        .growth-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.25);
+        }
+
+        .growth-number {
+            width: 40px;
+            height: 40px;
+            background: #4a9df7;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .growth-title {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .growth-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 合作伙伴收益 */
+        .partner-section {
+            margin: 60px 0;
+        }
+
+        .partner-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .partner-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.25);
+        }
+
+        .partner-header {
+            background: linear-gradient(135deg, #4a9df7 0%, #2a6bc5 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .partner-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .partner-type {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .partner-body {
+            padding: 30px;
+        }
+
+        .partner-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .partner-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .partner-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            color: #555;
+        }
+
+        .feature-value {
+            font-weight: 600;
+            color: #4a9df7;
+        }
+
+        .revenue-example {
+            background: #f9fbfd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .revenue-title {
+            color: #4a9df7;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .revenue-amount {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #222;
+            color: #aaa;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a9df7;
+            display: inline-block;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            color: #aaa;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #4a9df7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #aaa;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #4a9df7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .growth-steps {
+                flex-direction: column;
+            }
+            
+            .chart-section {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 36px;
+            }
+
+            .banner-content p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .stat-value {
+                font-size: 32px;
+            }
+            
+            .chart-section {
+                padding: 30px 20px;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+            
+            .revenue-banner {
+                height: 500px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./image/logo.png" alt="安维深科技">
+                安维深科技
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="mode.html" class="active">盈利模式</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="revenue-banner">
+        <div class="banner-content">
+            <h1>多元化盈利模式</h1>
+            <p>构建可持续增长的业务生态系统，实现多方共赢</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value">5.8亿</div>
+                    <div class="stat-label">年营业收入</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">36.5%</div>
+                    <div class="stat-label">年增长率</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">42%</div>
+                    <div class="stat-label">毛利率</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1200+</div>
+                    <div class="stat-label">合作伙伴</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <div class="revenue-container">
+        <!-- 盈利模型 -->
+        <section class="models-section">
+            <div class="section-header">
+                <h2 class="section-title">核心盈利模型</h2>
+                <p class="section-desc">我们构建了多元化的收入来源，确保业务持续稳定增长</p>
+            </div>
+            
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="model-title">硬件销售</h3>
+                    <p class="model-desc">智能家居设备直销与渠道销售，包括智能中枢、传感器、控制器等核心产品</p>
+                    
+                    <div class="revenue-stats">
+                        <div class="stat-box">
+                            <div class="stat-box-value">58%</div>
+                            <div class="stat-box-label">收入占比</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-value">42%</div>
+                            <div class="stat-box-label">毛利率</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="model-title">增值服务</h3>
+                    <p class="model-desc">提供专业安装、定制方案设计、系统维护等高端服务</p>
+                    
+                    <div class="revenue-stats">
+                        <div class="stat-box">
+                            <div class="stat-box-value">22%</div>
+                            <div class="stat-box-label">收入占比</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-value">68%</div>
+                            <div class="stat-box-label">毛利率</div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="model-card">
+                    <div class="model-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="model-title">平台生态</h3>
+                    <p class="model-desc">开发者平台分成、广告收入、第三方服务佣金等</p>
+                    
+                    <div class="revenue-stats">
+                        <div class="stat-box">
+                            <div class="stat-box-value">5%</div>
+                            <div class="stat-box-label">收入占比</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-box-value">92%</div>
+                            <div class="stat-box-label">毛利率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 收入图表 -->
+        <section class="chart-section">
+            <div class="section-header">
+                <h2 class="section-title">收入结构分析</h2>
+                <p class="section-desc">多元化收入来源确保业务稳定性和持续增长潜力</p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- 合作伙伴收益 -->
+        <section class="partner-section">
+            <div class="section-header">
+                <h2 class="section-title">合作伙伴收益计划</h2>
+                <p class="section-desc">与安维深合作，共享智能家居市场增长红利</p>
+            </div>
+            
+            <div class="partner-cards">
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <h3 class="partner-name">授权经销商</h3>
+                        <div class="partner-type">区域销售合作伙伴</div>
+                    </div>
+                    <div class="partner-body">
+                        <ul class="partner-features">
+                            <li>
+                                <span class="feature-name">产品毛利率</span>
+                                <span class="feature-value">25-40%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">季度销售返点</span>
+                                <span class="feature-value">3-8%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">年度增长奖励</span>
+                                <span class="feature-value">最高15%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">服务分成</span>
+                                <span class="feature-value">20-30%</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="revenue-example">
+                            <div class="revenue-title">典型经销商年收益</div>
+                            <div class="revenue-amount">¥680,000+</div>
+                            <div style="font-size: 14px; color: #777; margin-top: 5px;">基于年销售额300万元计算</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <h3 class="partner-name">系统集成商</h3>
+                        <div class="partner-type">解决方案合作伙伴</div>
+                    </div>
+                    <div class="partner-body">
+                        <ul class="partner-features">
+                            <li>
+                                <span class="feature-name">项目利润率</span>
+                                <span class="feature-value">35-50%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">硬件折扣</span>
+                                <span class="feature-value">25-35%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">服务分成</span>
+                                <span class="feature-value">40-60%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">年度奖励</span>
+                                <span class="feature-value">最高¥200,000</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="revenue-example">
+                            <div class="revenue-title">典型集成商年收益</div>
+                            <div class="revenue-amount">¥1,200,000+</div>
+                            <div style="font-size: 14px; color: #777; margin-top: 5px;">基于年项目额500万元计算</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <h3 class="partner-name">开发者</h3>
+                        <div class="partner-type">技术合作伙伴</div>
+                    </div>
+                    <div class="partner-body">
+                        <ul class="partner-features">
+                            <li>
+                                <span class="feature-name">应用销售分成</span>
+                                <span class="feature-value">70-85%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">订阅分成</span>
+                                <span class="feature-value">60-75%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">广告分成</span>
+                                <span class="feature-value">60%</span>
+                            </li>
+                            <li>
+                                <span class="feature-name">热门应用奖励</span>
+                                <span class="feature-value">最高¥50,000/月</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="revenue-example">
+                            <div class="revenue-title">顶级开发者月收益</div>
+                            <div class="revenue-amount">¥80,000+</div>
+                            <div style="font-size: 14px; color: #777; margin-top: 5px;">基于月活跃用户10万+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>产品中心</h4>
+                    <ul>
+                        <li><a href="product.html">产品介绍</a></li>
+                        <li><a href="manual.html">使用技巧</a></li>
+                        <li><a href="patent.html">产品专利</a></li>
+                        <li><a href="new-product.html">新品上市</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="news.html">新闻中心</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="partners.html">合作案例</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 深圳市南山区科技园</li>
+                        <li><i class="fas fa-phone"></i> 400-888-8888</li>
+                        <li><i class="fas fa-envelope"></i> contact@avision.com</li>
+                        <li>
+                            <div style="display: flex; gap: 20px; margin-top: 20px;">
+                                <a href="#" style="font-size: 24px;"><i class="fab fa-weixin"></i></a>
+                                <a href="#" style="font-size: 24px;"><i class="fab fa-weibo"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>版权所有 © 安维深科技 2010-2025。保留一切权利。粤ICP备12345678号</p>
+                <p style="margin-top: 15px;">隐私政策 | 使用条款 | 法律声明 | 网站地图</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 卡片悬停效果
+        const cards = document.querySelectorAll('.model-card, .growth-card, .partner-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // 收入图表
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024(预计)'],
+                datasets: [{
+                    label: '硬件销售',
+                    data: [320, 380, 410, 480, 550],
+                    backgroundColor: '#4a9df7',
+                    borderWidth: 0
+                }, {
+                    label: '增值服务',
+                    data: [80, 120, 160, 220, 300],
+                    backgroundColor: '#36a2eb',
+                    borderWidth: 0
+                }, {
+                    label: '平台生态',
+                    data: [20, 40, 70, 120, 200],
+                    backgroundColor: '#ff6384',
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '年度收入分析 (单位: 百万元)',
+                        font: {
+                            size: 18
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: false,
+                    },
+                    y: {
+                        stacked: false,
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '¥' + value + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const statItems = document.querySelectorAll('.stat-item');
+            statItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = 1;
+                    item.style.transform = 'translateY(0)';
+                }, 300 * index);
+            });
+            
+            const modelCards = document.querySelectorAll('.model-card');
+            modelCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }, 400 * index);
+            });
+        });
+    </script>
+</body>
+
+</html>

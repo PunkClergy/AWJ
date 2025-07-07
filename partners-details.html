@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万科智慧社区案例 - 安维深科技</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 导航 */
+        .header {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 55px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #4a9df7;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #4a9df7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Banner */
+        .case-banner {
+            height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .banner-content {
+            max-width: 1000px;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .banner-content h1 {
+            font-size: 56px;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .banner-content p {
+            font-size: 22px;
+            color: #e6e6e6;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .case-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .meta-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .meta-label {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        /* 主内容区 */
+        .case-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            color: #222;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: #4a9df7;
+            border-radius: 3px;
+        }
+
+        .section-desc {
+            max-width: 800px;
+            margin: 30px auto 0;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 项目概览 */
+        .overview-section {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 100px;
+            align-items: center;
+        }
+
+        .overview-content {
+            flex: 1;
+        }
+
+        .overview-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            height: 450px;
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+
+        .overview-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .overview-content h3 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        .overview-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 4px solid #4a9df7;
+            padding: 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+        }
+
+        .highlight-box p {
+            color: #444;
+            font-size: 18px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* 挑战与解决方案 */
+        .solution-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            border-radius: 20px;
+            padding: 80px 60px;
+            margin: 80px 0;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.2);
+        }
+
+        .solution-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #4a9df7;
+        }
+
+        .solution-icon {
+            font-size: 40px;
+            color: #4a9df7;
+            margin-bottom: 25px;
+        }
+
+        .solution-title {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .solution-desc {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* 成果展示 */
+        .results-section {
+            margin: 80px 0;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.2);
+        }
+
+        .result-icon {
+            width: 80px;
+            height: 80px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: #4a9df7;
+        }
+
+        .result-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: #4a9df7;
+            margin-bottom: 10px;
+        }
+
+        .result-title {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .result-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 客户评价 */
+        .testimonial-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            border-radius: 20px;
+            padding: 80px 60px;
+            color: white;
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 60px;
+            color: #4a9df7;
+            opacity: 0.3;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 22px;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #4a9df7;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .client-details {
+            text-align: left;
+        }
+
+        .client-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .client-position {
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        .client-company {
+            color: #4a9df7;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* 技术应用 */
+        .tech-section {
+            margin: 80px 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(74, 157, 247, 0.2);
+        }
+
+        .tech-icon {
+            font-size: 48px;
+            color: #4a9df7;
+            margin-bottom: 20px;
+        }
+
+        .tech-title {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .tech-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 相关案例 */
+        .related-section {
+            margin: 80px 0;
+        }
+
+        .related-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .related-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.25);
+        }
+
+        .related-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+
+        .related-content {
+            padding: 25px;
+        }
+
+        .related-title {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .related-card:hover .related-title {
+            color: #4a9df7;
+        }
+
+        .related-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a9df7;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .read-more i {
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* 底部 */
+        .footer {
+            background: #222;
+            color: #aaa;
+            padding: 80px 0 30px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a9df7;
+            display: inline-block;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            color: #aaa;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #4a9df7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #aaa;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #4a9df7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .overview-section {
+                flex-direction: column;
+            }
+            
+            .solution-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 40px;
+            }
+
+            .banner-content p {
+                font-size: 18px;
+            }
+            
+            .case-meta {
+                gap: 15px;
+            }
+            
+            .meta-item {
+                padding: 12px 20px;
+            }
+            
+            .meta-value {
+                font-size: 24px;
+            }
+            
+            .solution-section {
+                padding: 50px 30px;
+            }
+            
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-section {
+                padding: 50px 30px;
+            }
+            
+            .testimonial-text {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+            
+            .case-banner {
+                height: 600px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .client-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .client-details {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./image/logo.png" alt="安维深科技">
+                安维深科技
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">公司简介</a></li>
+                <li><a href="news.html">新闻中心</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="partners.html" class="active">客户案例</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="case-banner">
+        <div class="banner-content">
+            <h1>万科智慧社区项目</h1>
+            <p>安维深科技为万科高端住宅项目提供全屋智能解决方案，打造未来生活新体验</p>
+            
+            <div class="case-meta">
+                <div class="meta-item">
+                    <div class="meta-value">25+</div>
+                    <div class="meta-label">项目覆盖</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-value">15%</div>
+                    <div class="meta-label">价值提升</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-value">2021-2023</div>
+                    <div class="meta-label">实施时间</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <div class="case-container">
+        <!-- 项目概览 -->
+        <div class="overview-section">
+            <div class="overview-content">
+                <h3>项目概览</h3>
+                <p>万科集团作为中国领先的房地产开发商，致力于打造高品质住宅社区。随着智能家居技术的快速发展，万科希望在其高端住宅项目中引入全屋智能解决方案，提升住宅的科技含量和居住体验。</p>
+                
+                <p>安维深科技作为智能家居领域的领导者，与万科集团达成战略合作，为万科在全国12个城市的25个高端住宅项目提供定制化的全屋智能解决方案。项目覆盖超过10,000户家庭，实施周期为2021年至2023年。</p>
+                
+                <div class="highlight-box">
+                    <p>"安维深的智能家居解决方案不仅提升了我们项目的市场竞争力，更通过技术创新为业主创造了前所未有的智能生活体验。"</p>
+                </div>
+                
+                <p>该项目采用了安维深最新一代AI智能家居中枢系统，整合了照明控制、环境监测、安防系统、能源管理等模块，实现了全屋设备的智能联动和远程控制。</p>
+            </div>
+            <div class="overview-image">
+                <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="万科智慧社区">
+            </div>
+        </div>
+
+        <!-- 挑战与解决方案 -->
+        <div class="solution-section">
+            <div class="section-header">
+                <h2 class="section-title">挑战与解决方案</h2>
+                <p class="section-desc">面对复杂的项目实施环境和多样化的用户需求，安维深提供了创新性的解决方案</p>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="solution-title">系统兼容性挑战</h3>
+                    <p class="solution-desc">万科项目涉及多种建筑类型和户型结构，需要解决方案具备高度兼容性和灵活性。</p>
+                    <p class="solution-desc">解决方案：采用模块化设计，根据不同户型定制解决方案，确保系统与各类建筑完美适配。</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="solution-title">用户体验需求</h3>
+                    <p class="solution-desc">不同年龄段用户对智能家居接受程度不同，需要简单易用的操作界面。</p>
+                    <p class="solution-desc">解决方案：开发多终端控制平台（手机App、语音控制、墙面面板），提供个性化场景设置，满足不同用户需求。</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="solution-title">安全与隐私保护</h3>
+                    <p class="solution-desc">智能家居系统涉及用户隐私和数据安全，需要最高级别的安全保障。</p>
+                    <p class="solution-desc">解决方案：采用端到端加密技术，建立多层安全防护体系，通过国际安全认证，确保用户数据安全。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 实施成果 -->
+        <div class="results-section">
+            <div class="section-header">
+                <h2 class="section-title">实施成果</h2>
+                <p class="section-desc">万科智慧社区项目取得了显著成效，为业主和开发商创造了多重价值</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="result-value">15%</div>
+                    <h3 class="result-title">项目溢价提升</h3>
+                    <p class="result-desc">智能家居系统显著提升了住宅项目的市场价值和竞争力</p>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="result-value">95%</div>
+                    <h3 class="result-title">用户满意度</h3>
+                    <p class="result-desc">业主对智能家居系统的使用体验给予高度评价</p>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="result-value">22%</div>
+                    <h3 class="result-title">能源节约</h3>
+                    <p class="result-desc">通过智能能源管理系统实现显著节能效果</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 技术应用 -->
+        <div class="tech-section">
+            <div class="section-header">
+                <h2 class="section-title">核心技术应用</h2>
+                <p class="section-desc">安维深在万科项目中应用了多项创新技术，打造领先的智能家居体验</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="tech-title">AI智能中枢</h3>
+                    <p class="tech-desc">基于深度学习的智能决策系统，实现设备间的智能联动和场景自适应</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3 class="tech-title">多模态交互</h3>
+                    <p class="tech-desc">支持语音、手势、手机App和物理按键等多种交互方式</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="tech-title">边缘计算</h3>
+                    <p class="tech-desc">本地化数据处理确保响应速度，同时与云端协同提供智能服务</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="tech-title">区块链安全</h3>
+                    <p class="tech-desc">采用区块链技术确保设备身份认证和数据传输安全</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 客户评价 -->
+        <div class="testimonial-section">
+            <div class="testimonial-content">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">"安维深的智能家居解决方案不仅提升了我们项目的科技感和市场价值，更重要的是为业主创造了真正便捷、舒适的生活体验。系统上线后，我们收到了大量业主的积极反馈，尤其是智能场景和能源管理功能获得了高度认可。安维深团队的专业性和对细节的把控给我们留下了深刻印象。"</p>
+                
+                <div class="client-info">
+                    <div class="client-avatar">张</div>
+                    <div class="client-details">
+                        <div class="client-name">张明</div>
+                        <div class="client-position">万科集团智能家居事业部总监</div>
+                        <div class="client-company">万科集团</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 相关案例 -->
+        <div class="related-section">
+            <div class="section-header">
+                <h2 class="section-title">相关案例</h2>
+                <p class="section-desc">探索更多安维深科技的成功案例</p>
+            </div>
+            
+            <div class="related-cases">
+                <div class="related-card">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="希尔顿酒店">
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-title">希尔顿智慧酒店升级</h3>
+                        <p class="related-desc">为全球80+家希尔顿酒店提供智能客房解决方案，提升客户体验和运营效率</p>
+                        <a href="#" class="read-more">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="related-card">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="清华大学">
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-title">清华大学智慧校园</h3>
+                        <p class="related-desc">为清华大学新校区提供全方位智慧校园解决方案，打造现代化教育环境</p>
+                        <a href="#" class="read-more">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="related-card">
+                    <div class="related-image">
+                        <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="协和医院">
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-title">协和医院智能病房</h3>
+                        <p class="related-desc">为北京协和医院800+病房部署智能环境控制系统，提升患者满意度</p>
+                        <a href="#" class="read-more">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>产品中心</h4>
+                    <ul>
+                        <li><a href="product.html">产品介绍</a></li>
+                        <li><a href="manual.html">使用技巧</a></li>
+                        <li><a href="patent.html">产品专利</a></li>
+                        <li><a href="new-product.html">新品上市</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="news.html">新闻中心</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="partners.html">客户案例</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 深圳市南山区科技园</li>
+                        <li><i class="fas fa-phone"></i> 400-888-8888</li>
+                        <li><i class="fas fa-envelope"></i> contact@avision.com</li>
+                        <li>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-weixin"></i></a>
+                                <a href="#"><i class="fab fa-weibo"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>版权所有 © 安维深科技 2010-2025。保留一切权利。粤ICP备12345678号</p>
+                <p style="margin-top: 15px;">隐私政策 | 使用条款 | 法律声明 | 网站地图</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // 卡片悬停效果
+        const cards = document.querySelectorAll('.solution-card, .result-card, .tech-card, .related-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

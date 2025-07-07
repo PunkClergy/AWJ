@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户案例 - 安维深科技</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 导航 */
+        .header {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 55px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #4a9df7;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #4a9df7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Banner */
+        .client-banner {
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .banner-content h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 20px;
+            color: #e6e6e6;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 50px 14px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #4a9df7;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* 主内容区 */
+        .client-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #222;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #4a9df7;
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 客户筛选 */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: #fff;
+            color: #555;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #4a9df7;
+            color: white;
+            border-color: #4a9df7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 157, 247, 0.3);
+        }
+
+        /* 客户网格 */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .client-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(74, 157, 247, 0.25);
+        }
+
+        .client-header {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .client-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .client-card:hover .client-bg {
+            transform: scale(1.05);
+        }
+
+        .client-logo {
+            position: absolute;
+            bottom: -30px;
+            left: 30px;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .client-info {
+            padding: 50px 30px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client-name {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .client-card:hover .client-name {
+            color: #4a9df7;
+        }
+
+        .client-industry {
+            display: inline-block;
+            background: #f0f7ff;
+            color: #4a9df7;
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .client-location {
+            color: #888;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .client-desc {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f4f8;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4a9df7;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* 成功案例 */
+        .success-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            border-radius: 16px;
+            padding: 60px;
+            margin: 80px 0;
+        }
+
+        .success-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .success-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .success-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(74, 157, 247, 0.15);
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: #4a9df7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .success-title {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .success-desc {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .client-quote {
+            background: #f8fafc;
+            border-left: 4px solid #4a9df7;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #4a9df7;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #222;
+        }
+
+        .author-position {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* 客户类型 */
+        .category-section {
+            margin: 80px 0;
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            background: #4a9df7;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(74, 157, 247, 0.25);
+        }
+
+        .category-card:hover .category-icon,
+        .category-card:hover .category-name,
+        .category-card:hover .category-count {
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 40px;
+            color: #4a9df7;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .category-name {
+            font-size: 18px;
+            color: #222;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .category-count {
+            font-size: 16px;
+            color: #888;
+            transition: all 0.3s;
+        }
+
+        /* 分页 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 30px 0;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f7ff;
+            color: #555;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+
+        .page-btn.active,
+        .page-btn:hover {
+            background: #4a9df7;
+            color: white;
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 订阅区域 */
+        .subscribe-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            padding: 80px 0;
+            color: #fff;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .subscribe-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .subscribe-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-desc {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .subscribe-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .subscribe-input {
+            flex: 1;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        .subscribe-btn {
+            padding: 16px 40px;
+            background: #4a9df7;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background: #3a8de6;
+            transform: translateY(-3px);
+        }
+
+        /* 底部 */
+        .footer {
+            background: #222;
+            color: #aaa;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a9df7;
+            display: inline-block;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            color: #aaa;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #4a9df7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #aaa;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #4a9df7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .success-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 36px;
+            }
+
+            .banner-content p {
+                font-size: 18px;
+            }
+            
+            .success-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .success-section {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./image/logo.png" alt="安维深科技">
+                安维深科技
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">公司简介</a></li>
+                <li><a href="news.html">新闻中心</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="partners.html" class="active">客户案例</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="client-banner">
+        <div class="banner-content">
+            <h1>我们的客户</h1>
+            <p>全球超过500家企业信赖安维深科技的智能解决方案</p>
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <div class="client-container">
+        <div class="section-header">
+            <h2 class="section-title">客户案例</h2>
+            <p class="section-desc">安维深科技为全球各行业领先企业提供智能家居解决方案，帮助客户提升生活品质和运营效率</p>
+        </div>
+
+        <!-- 客户网格 -->
+        <div class="clients-grid">
+            <!-- 客户1 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="万科集团" class="client-bg">
+                    <div class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Vanke_logo.svg/800px-Vanke_logo.svg.png" alt="万科">
+                    </div>
+                </div>
+                <div class="client-info">
+                    <h3 class="client-name">万科集团</h3>
+                    <span class="client-industry">房地产</span>
+                    <div class="client-location">
+                        <i class="fas fa-map-marker-alt"></i> 深圳、上海、北京等12个城市
+                    </div>
+                    <p class="client-desc">为万科在全国的25个高端住宅项目提供全屋智能解决方案，覆盖超过10,000户家庭，提升项目溢价15%。</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">25+</div>
+                            <div class="stat-label">项目</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">10k+</div>
+                            <div class="stat-label">家庭</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">15%</div>
+                            <div class="stat-label">溢价</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户2 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="希尔顿酒店" class="client-bg">
+                    <div class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Hilton_logo_black.svg/800px-Hilton_logo_black.svg.png" alt="希尔顿">
+                    </div>
+                </div>
+                <div class="client-info">
+                    <h3 class="client-name">希尔顿酒店集团</h3>
+                    <span class="client-industry">酒店业</span>
+                    <div class="client-location">
+                        <i class="fas fa-map-marker-alt"></i> 全球80+家酒店
+                    </div>
+                    <p class="client-desc">为希尔顿旗下高端酒店提供智能客房解决方案，实现客房自动化控制，提升客户满意度28%，降低能源消耗20%。</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">80+</div>
+                            <div class="stat-label">酒店</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">28%</div>
+                            <div class="stat-label">满意度↑</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">20%</div>
+                            <div class="stat-label">能耗↓</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户3 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <img src="https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="华润万象城" class="client-bg">
+                    <div class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/China_Resources_Enterprise_logo.svg/800px-China_Resources_Enterprise_logo.svg.png" alt="华润">
+                    </div>
+                </div>
+                <div class="client-info">
+                    <h3 class="client-name">华润万象城</h3>
+                    <span class="client-industry">零售业</span>
+                    <div class="client-location">
+                        <i class="fas fa-map-marker-alt"></i> 全国18个城市
+                    </div>
+                    <p class="client-desc">为华润万象城提供智能商业空间解决方案，实现智能照明、环境控制和安防系统一体化，提升顾客停留时间35%。</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">18</div>
+                            <div class="stat-label">城市</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">35%</div>
+                            <div class="stat-label">停留时间↑</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">30%</div>
+                            <div class="stat-label">能效↑</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户4 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="清华大学" class="client-bg">
+                    <div class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/4/4c/Tsinghua_University_Logo.svg/800px-Tsinghua_University_Logo.svg.png" alt="清华">
+                    </div>
+                </div>
+                <div class="client-info">
+                    <h3 class="client-name">清华大学</h3>
+                    <span class="client-industry">教育机构</span>
+                    <div class="client-location">
+                        <i class="fas fa-map-marker-alt"></i> 北京
+                    </div>
+                    <p class="client-desc">为清华大学新建校区提供智慧校园解决方案，覆盖教学区、宿舍区和公共区域，实现校园智能化管理，降低运维成本25%。</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">建筑</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">25%</div>
+                            <div class="stat-label">成本↓</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">40%</div>
+                            <div class="stat-label">效率↑</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户5 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="协和医院" class="client-bg">
+                    <div class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Peking_Union_Medical_College_Hospital_logo.svg/800px-Peking_Union_Medical_College_Hospital_logo.svg.png" alt="协和">
+                    </div>
+                </div>
+                <div class="client-info">
+                    <h3 class="client-name">北京协和医院</h3>
+                    <span class="client-industry">医疗机构</span>
+                    <div class="client-location">
+                        <i class="fas fa-map-marker-alt"></i> 北京
+                    </div>
+                    <p class="client-desc">为协和医院提供智能医疗环境解决方案，实现病房环境智能控制、医疗设备互联和安防监控，提升患者满意度40%。</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">800+</div>
+                            <div class="stat-label">病房</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">40%</div>
+                            <div class="stat-label">满意度↑</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">30%</div>
+                            <div class="stat-label">响应时间↓</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户6 -->
+            <div class="client-card">
+                <div class="client-header">
+                    <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="深圳市政府" class="client-bg">
+                    <div class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Shenzhen_Government_Logo.svg/800px-Shenzhen_Government_Logo.svg.png" alt="深圳政府">
+                    </div>
+                </div>
+                <div class="client-info">
+                    <h3 class="client-name">深圳市政府</h3>
+                    <span class="client-industry">政府机构</span>
+                    <div class="client-location">
+                        <i class="fas fa-map-marker-alt"></i> 深圳
+                    </div>
+                    <p class="client-desc">为深圳智慧城市项目提供核心智能家居技术，覆盖10个公共社区，提升居民生活品质和社区管理效率。</p>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">社区</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">50k+</div>
+                            <div class="stat-label">居民</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">35%</div>
+                            <div class="stat-label">效率↑</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <div class="pagination">
+            <a href="#" class="page-btn disabled"><i class="fas fa-chevron-left"></i></a>
+            <a href="#" class="page-btn active">1</a>
+            <a href="#" class="page-btn">2</a>
+            <a href="#" class="page-btn">3</a>
+            <a href="#" class="page-btn">4</a>
+            <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+        </div>
+
+
+        <!-- 成功案例 -->
+        <div class="success-section">
+            <div class="section-header">
+                <h2 class="section-title">成功案例</h2>
+                <p class="section-desc">客户对安维深解决方案的真实评价和成功经验分享</p>
+            </div>
+            
+            <div class="success-container">
+                <div class="success-card">
+                    <div class="success-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="success-title">万科智慧社区项目</h3>
+                    <p class="success-desc">通过部署安维深全屋智能系统，万科高端社区实现了智能家居全覆盖，提升项目价值的同时，为居民带来前所未有的便捷生活体验。</p>
+                    <div class="client-quote">
+                        <p class="quote-text">"安维深的解决方案不仅提升了我们项目的科技感，更在销售和后期服务中带来了显著优势。"</p>
+                        <div class="quote-author">
+                            <div class="author-avatar">张</div>
+                            <div class="author-info">
+                                <div class="author-name">张明</div>
+                                <div class="author-position">万科集团智能家居事业部总监</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-card">
+                    <div class="success-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3 class="success-title">希尔顿智慧酒店升级</h3>
+                    <p class="success-desc">希尔顿酒店集团通过安维深的智能客房解决方案，实现了客房环境的智能控制和个性化服务，大幅提升客户满意度和运营效率。</p>
+                    <div class="client-quote">
+                        <p class="quote-text">"安维深的技术让我们的客房服务响应时间缩短了60%，客户满意度提升了28%，这是非常显著的改善。"</p>
+                        <div class="quote-author">
+                            <div class="author-avatar">M</div>
+                            <div class="author-info">
+                                <div class="author-name">Michael Johnson</div>
+                                <div class="author-position">希尔顿酒店集团亚太区技术总监</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-card">
+                    <div class="success-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3 class="success-title">深圳智慧社区建设</h3>
+                    <p class="success-desc">安维深为深圳智慧城市项目提供核心技术支持，实现了10个社区的智能化改造，为5万多居民提供了更安全、便捷的生活环境。</p>
+                    <div class="client-quote">
+                        <p class="quote-text">"安维深的智慧社区解决方案在提升居民生活品质的同时，为我们的城市管理提供了强有力的技术支持。"</p>
+                        <div class="quote-author">
+                            <div class="author-avatar">王</div>
+                            <div class="author-info">
+                                <div class="author-name">王建国</div>
+                                <div class="author-position">深圳智慧城市项目负责人</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>产品中心</h4>
+                    <ul>
+                        <li><a href="product.html">产品介绍</a></li>
+                        <li><a href="manual.html">使用技巧</a></li>
+                        <li><a href="patent.html">产品专利</a></li>
+                        <li><a href="new-product.html">新品上市</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="news.html">新闻中心</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="partners.html">客户案例</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 深圳市南山区科技园</li>
+                        <li><i class="fas fa-phone"></i> 400-888-8888</li>
+                        <li><i class="fas fa-envelope"></i> contact@avision.com</li>
+                        <li>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-weixin"></i></a>
+                                <a href="#"><i class="fab fa-weibo"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>版权所有 © 安维深科技 2010-2025。保留一切权利。粤ICP备12345678号</p>
+                <p style="margin-top: 15px;">隐私政策 | 使用条款 | 法律声明 | 网站地图</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 搜索功能
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+
+        searchBtn.addEventListener('click', function() {
+            if (searchInput.value.trim() !== '') {
+                alert(`正在搜索客户: "${searchInput.value}"`);
+                // 实际项目中会执行搜索请求
+            }
+        });
+
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                alert(`正在搜索客户: "${searchInput.value}"`);
+                // 实际项目中会执行搜索请求
+            }
+        });
+
+        // 筛选功能
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // 给当前点击的按钮添加active类
+                this.classList.add('active');
+                
+                // 这里可以添加实际的筛选逻辑
+                alert(`正在筛选: ${this.textContent}`);
+            });
+        });
+        
+        // 订阅表单处理
+        const subscribeForm = document.querySelector('.subscribe-form');
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('.subscribe-input');
+
+            if (emailInput.value.trim() !== '') {
+                // 显示成功消息
+                alert(`感谢订阅！确认邮件已发送至: ${emailInput.value}`);
+                emailInput.value = '';
+            } else {
+                alert('请输入有效的电子邮箱地址！');
+            }
+        });
+        
+        // 卡片悬停效果
+        const clientCards = document.querySelectorAll('.client-card');
+        clientCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专利中心 - 安维深科技</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 导航 */
+        .header {
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 55px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #4a9df7;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #4a9df7;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after, .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Banner */
+        .patent-banner {
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                         url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .banner-content h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 20px;
+            color: #e6e6e6;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 50px 14px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #4a9df7;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* 主内容区 */
+        .patent-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+        }
+
+        /* 专利列表 */
+        .patent-list {
+            flex: 1;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .list-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-header h2 {
+            font-size: 28px;
+            color: #222;
+        }
+
+        .sort-options select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f8fafc;
+            font-size: 14px;
+        }
+
+        .patent-item {
+            padding: 30px;
+            border-bottom: 1px solid #f0f4f8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .patent-item:hover {
+            background: #f9fbfd;
+            box-shadow: 0 5px 15px rgba(74, 157, 247, 0.1);
+        }
+
+        .patent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .patent-id {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4a9df7;
+            background: #f0f7ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .patent-date {
+            font-size: 14px;
+            color: #888;
+            display: flex;
+            align-items: center;
+        }
+
+        .patent-date i {
+            margin-right: 8px;
+            color: #4a9df7;
+        }
+
+        .patent-title {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .patent-item:hover .patent-title {
+            color: #4a9df7;
+        }
+
+        .patent-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .patent-category {
+            font-size: 14px;
+            background: #f0f7ff;
+            color: #4a9df7;
+            padding: 6px 15px;
+            border-radius: 30px;
+        }
+
+        .patent-status {
+            font-size: 14px;
+            background: #e6f7e6;
+            color: #2ecc71;
+            padding: 6px 15px;
+            border-radius: 30px;
+        }
+
+        .patent-abstract {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .patent-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .patent-applicants {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .view-details {
+            display: inline-flex;
+            align-items: center;
+            color: #4a9df7;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .view-details i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        .view-details:hover i {
+            transform: translateX(5px);
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px 25px;
+            background: #f0f7ff;
+            color: #222;
+            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+        }
+
+        .categories-list {
+            padding: 20px 25px;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f4f8;
+            text-decoration: none;
+            color: #555;
+            transition: all 0.3s;
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-item:hover {
+            color: #4a9df7;
+            transform: translateX(5px);
+        }
+
+        .category-count {
+            background: #f0f7ff;
+            color: #4a9df7;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        .chart-container {
+            padding: 20px 25px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .legend-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .patent-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .stat-card {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: #e1f0ff;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4a9df7;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 技术优势部分 */
+        .tech-advantage {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            padding: 50px;
+            margin: 60px auto;
+            max-width: 1200px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .advantage-icon {
+            width: 80px;
+            height: 80px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: #4a9df7;
+        }
+
+        .advantage-title {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .advantage-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* 分页 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f7ff;
+            color: #555;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+
+        .page-btn.active, 
+        .page-btn:hover {
+            background: #4a9df7;
+            color: white;
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 订阅区域 */
+        .subscribe-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            padding: 80px 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .subscribe-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .subscribe-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-desc {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .subscribe-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .subscribe-input {
+            flex: 1;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        .subscribe-btn {
+            padding: 16px 40px;
+            background: #4a9df7;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background: #3a8de6;
+            transform: translateY(-3px);
+        }
+
+        /* 底部 */
+        .footer {
+            background: #222;
+            color: #aaa;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a9df7;
+            display: inline-block;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            color: #aaa;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #4a9df7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #aaa;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #4a9df7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .patent-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .tech-advantage {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .patent-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner-content h1 {
+                font-size: 36px;
+            }
+            
+            .banner-content p {
+                font-size: 18px;
+            }
+            
+            .patent-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .patent-title {
+                font-size: 20px;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <div class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./image/logo.png" alt="安维深科技">
+                安维深科技
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="product.html">产品介绍</a></li>
+                <li><a href="manual.html">使用技巧</a></li>
+                <li><a href="patent.html" class="active">专利中心</a></li>
+                <li><a href="new-product.html">新品上市</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <section class="patent-banner">
+        <div class="banner-content">
+            <h1>专利与技术中心</h1>
+            <p>探索安维深科技的核心技术创新与知识产权成果</p>
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <div class="patent-container">
+        <!-- 专利列表 -->
+        <div class="patent-list">
+            <div class="list-header">
+                <h2>专利库 (128项)</h2>
+            </div>
+            
+            <!-- 专利项 1 -->
+            <div class="patent-item">
+                <div class="patent-header">
+                    <div class="patent-id">CN202310567890.1A</div>
+                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-05-20</div>
+                </div>
+                <h3 class="patent-title">基于人工智能的智能家居行为预测系统及方法</h3>
+                <div class="patent-meta">
+                    <div class="patent-category">人工智能</div>
+                    <div class="patent-category">智能家居</div>
+                    <div class="patent-status">已授权</div>
+                </div>
+                <p class="patent-abstract">
+                    本发明公开了一种基于人工智能的智能家居行为预测系统及方法，通过深度学习模型分析用户历史行为数据，预测用户习惯并自动调整家居设备状态。系统包括数据采集模块、特征提取模块、行为预测模块和设备控制模块...
+                </p>
+                <div class="patent-footer">
+                    <div class="patent-applicants">发明人: 张伟、李娜、王明等</div>
+                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 专利项 2 -->
+            <div class="patent-item">
+                <div class="patent-header">
+                    <div class="patent-id">US2023156789A1</div>
+                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-04-15</div>
+                </div>
+                <h3 class="patent-title">低功耗蓝牙Mesh网络在智能家居中的通信优化方法</h3>
+                <div class="patent-meta">
+                    <div class="patent-category">物联网</div>
+                    <div class="patent-category">通信技术</div>
+                    <div class="patent-status">已授权</div>
+                </div>
+                <p class="patent-abstract">
+                    本专利涉及一种低功耗蓝牙Mesh网络在智能家居中的通信优化方法，通过动态调整节点传输功率和路由选择算法，显著降低整体网络能耗，提高数据传输可靠性。该技术已应用于安维深智能家居中枢系统...
+                </p>
+                <div class="patent-footer">
+                    <div class="patent-applicants">发明人: 陈华、刘强、赵敏等</div>
+                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 专利项 3 -->
+            <div class="patent-item">
+                <div class="patent-header">
+                    <div class="patent-id">JP2023501234A</div>
+                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-03-08</div>
+                </div>
+                <h3 class="patent-title">多模态生物特征融合的智能门锁身份认证系统</h3>
+                <div class="patent-meta">
+                    <div class="patent-category">生物识别</div>
+                    <div class="patent-category">安全技术</div>
+                    <div class="patent-status">实质审查</div>
+                </div>
+                <p class="patent-abstract">
+                    本发明提供了一种多模态生物特征融合的智能门锁身份认证系统，结合人脸识别、指纹识别和声纹识别技术，采用多级融合策略提高识别准确率与安全性。系统误识率低于0.0001%，支持活体检测...
+                </p>
+                <div class="patent-footer">
+                    <div class="patent-applicants">发明人: 王涛、林芳、郑凯</div>
+                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 专利项 4 -->
+            <div class="patent-item">
+                <div class="patent-header">
+                    <div class="patent-id">CN202298765432.5B</div>
+                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-02-22</div>
+                </div>
+                <h3 class="patent-title">基于边缘计算的智能家居数据隐私保护方法及系统</h3>
+                <div class="patent-meta">
+                    <div class="patent-category">边缘计算</div>
+                    <div class="patent-category">数据安全</div>
+                    <div class="patent-status">已授权</div>
+                </div>
+                <p class="patent-abstract">
+                    本专利提出了一种基于边缘计算的智能家居数据隐私保护方法，通过在本地设备进行数据预处理和特征提取，仅传输必要信息至云端，大幅减少隐私数据泄露风险。系统支持差分隐私和同态加密技术...
+                </p>
+                <div class="patent-footer">
+                    <div class="patent-applicants">发明人: 杨帆、周杰、吴晓</div>
+                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 专利项 5 -->
+            <div class="patent-item">
+                <div class="patent-header">
+                    <div class="patent-id">EP4123456A1</div>
+                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-01-18</div>
+                </div>
+                <h3 class="patent-title">自适应环境光照的智能照明系统及其控制方法</h3>
+                <div class="patent-meta">
+                    <div class="patent-category">智能照明</div>
+                    <div class="patent-category">环境感知</div>
+                    <div class="patent-status">已授权</div>
+                </div>
+                <p class="patent-abstract">
+                    本发明涉及一种自适应环境光照的智能照明系统，通过多传感器融合技术实时监测环境光照强度和色温，结合用户偏好和活动模式，自动调节灯光参数以提供最佳照明环境，同时降低能耗30%以上...
+                </p>
+                <div class="patent-footer">
+                    <div class="patent-applicants">发明人: 黄伟、孙静、钱浩</div>
+                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 分页 -->
+            <div class="pagination">
+                <a href="#" class="page-btn disabled"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="page-btn active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn">4</a>
+                <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+        
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <!-- 专利统计 -->
+            <div class="sidebar-card">
+                <div class="card-header">专利统计</div>
+                <div class="patent-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">128</div>
+                        <div class="stat-label">总专利数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">96</div>
+                        <div class="stat-label">已授权</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">28</div>
+                        <div class="stat-label">申请中</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">PCT国际</div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- 热门专利 -->
+            <div class="sidebar-card">
+                <div class="card-header">热门专利</div>
+                <div class="categories-list">
+                    <a href="#" class="category-item">
+                        <span>多模态生物特征融合认证系统</span>
+                        <span><i class="fas fa-eye"></i> 1280</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>智能家居行为预测算法</span>
+                        <span><i class="fas fa-eye"></i> 1124</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>低功耗蓝牙Mesh网络优化</span>
+                        <span><i class="fas fa-eye"></i> 986</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>边缘计算数据隐私保护</span>
+                        <span><i class="fas fa-eye"></i> 845</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span>自适应环境照明系统</span>
+                        <span><i class="fas fa-eye"></i> 792</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>产品中心</h4>
+                    <ul>
+                        <li><a href="product.html">产品介绍</a></li>
+                        <li><a href="manual.html">使用技巧</a></li>
+                        <li><a href="patent.html">产品专利</a></li>
+                        <li><a href="new-product.html">新品上市</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="news.html">新闻中心</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="partners.html">合作伙伴</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 深圳市南山区科技园</li>
+                        <li><i class="fas fa-phone"></i> 400-888-8888</li>
+                        <li><i class="fas fa-envelope"></i> contact@avision.com</li>
+                        <li>
+                            <div style="display: flex; gap: 20px; margin-top: 20px;">
+                                <a href="#" style="font-size: 24px;"><i class="fab fa-weixin"></i></a>
+                                <a href="#" style="font-size: 24px;"><i class="fab fa-weibo"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>版权所有 © 安维深科技 2010-2025。保留一切权利。粤ICP备12345678号</p>
+                <p style="margin-top: 15px;">隐私政策 | 使用条款 | 法律声明 | 网站地图</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 搜索功能
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+        
+        searchBtn.addEventListener('click', function() {
+            if (searchInput.value.trim() !== '') {
+                alert(`正在搜索专利: "${searchInput.value}"`);
+                // 实际项目中会执行搜索请求
+            }
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                alert(`正在搜索专利: "${searchInput.value}"`);
+                // 实际项目中会执行搜索请求
+            }
+        });
+        
+        // 订阅表单提交
+        const subscribeForm = document.querySelector('.subscribe-form');
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('.subscribe-input');
+            
+            if (emailInput.value.trim() !== '') {
+                // 显示成功消息
+                alert(`感谢订阅！技术白皮书将发送至: ${emailInput.value}`);
+                emailInput.value = '';
+            } else {
+                alert('请输入有效的电子邮箱地址！');
+            }
+        });
+        
+        // 专利项悬停效果
+        const patentItems = document.querySelectorAll('.patent-item');
+        patentItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // 专利统计卡片效果
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

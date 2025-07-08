@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,16 +129,24 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .banner-content h1 {
             font-size: 56px;
             color: #fff;
             margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .banner-content p {
@@ -201,9 +210,17 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* 主内容区 */
@@ -384,7 +401,8 @@
         .video-player {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
             background: #000;
         }
 
@@ -784,11 +802,11 @@
             .specs-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .specs-image {
                 height: 400px;
             }
-            
+
             .product-image {
                 position: relative;
                 max-width: 100%;
@@ -796,11 +814,11 @@
                 right: 0;
                 margin-top: 40px;
             }
-            
+
             .banner-content {
                 margin-top: 40px;
             }
-            
+
             .product-banner {
                 height: auto;
                 padding: 120px 0 80px;
@@ -816,35 +834,36 @@
             .banner-content p {
                 font-size: 20px;
             }
-            
-            .specs-section, .buy-section {
+
+            .specs-section,
+            .buy-section {
                 padding: 50px 30px;
             }
-            
+
             .section-title {
                 font-size: 32px;
             }
-            
+
             .cta-btn {
                 width: 100%;
                 justify-content: center;
             }
-            
+
             .subscribe-form {
                 flex-direction: column;
             }
-            
+
             .video-controls {
                 flex-wrap: wrap;
                 padding: 10px 15px;
             }
-            
+
             .progress-container {
                 order: 3;
                 flex: 0 0 100%;
                 margin: 10px 0;
             }
-            
+
             .volume-container {
                 margin-left: auto;
             }
@@ -858,15 +877,15 @@
             .logo {
                 font-size: 24px;
             }
-            
+
             .banner-content h1 {
                 font-size: 32px;
             }
-            
+
             .new-badge {
                 font-size: 14px;
             }
-            
+
             .feature-card {
                 padding: 30px 20px;
             }
@@ -882,7 +901,7 @@
                 <img src="./image/logo.png" alt="安维深科技">
                 安维深科技
             </div>
-                   <ul class="nav-menu">
+            <ul class="nav-menu">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="product.html">产品介绍</a></li>
                 <li><a href="manual.html">使用技巧</a></li>
@@ -896,10 +915,10 @@
     <section class="product-banner">
         <div class="banner-content">
             <div class="new-badge">全新上市</div>
-            <h1>AI智能家居中枢系统 Pro</h1>
-            <p>重新定义智能生活，未来已至</p>
+            <h1>安维深共享防偷拍探测器</h1>
+            <p>安维深共享防偷拍探测器</p>
             <div class="banner-cta">
-                <a href="#buy" class="cta-btn primary-btn">
+                <a href="./about.html" class="cta-btn primary-btn">
                     <i class="fas fa-shopping-cart"></i> 联系加盟
                 </a>
                 <a href="#video" class="cta-btn secondary-btn">
@@ -907,7 +926,8 @@
                 </a>
             </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI智能家居中枢系统" class="product-image">
+        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="AI智能家居中枢系统" class="product-image">
     </section>
 
     <!-- 主内容区 -->
@@ -918,55 +938,42 @@
                 <h2 class="section-title">产品亮点</h2>
                 <p class="section-desc">安维深AI智能家居中枢系统 Pro 集成了最前沿的智能技术，为您打造前所未有的智能生活体验</p>
             </div>
-            
+
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3 class="feature-title">AI智能决策</h3>
-                    <p class="feature-desc">基于深度学习算法，系统能学习您的习惯并自动优化家居环境，提供个性化场景推荐。</p>
+                    <h3 class="feature-title">超长续航与精准测距</h3>
+                    <p class="feature-desc">待机时长可达12小时,满足全天候使用需求。
+                        测距范围覆盖3米区域，精准定位目标,契合酒店等场景的隐私防护场景。</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3 class="feature-title">极速响应</h3>
-                    <p class="feature-desc">全新边缘计算架构，响应速度提升50%，本地处理确保指令即时执行。</p>
+                    <h3 class="feature-title">智能红外探测技术</h3>
+                    <p class="feature-desc">搭载高精度传感器,可敏锐捕捉隐藏摄像头发射的红外信号,实时触发警报，从源头阻断隐私泄露风险。</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="feature-title">全方位安全</h3>
-                    <p class="feature-desc">端到端加密通信，生物识别验证，确保您的智能家居系统免受入侵。</p>
+                    <h3 class="feature-title">全场景灵活适配</h3>
+                    <p class="feature-desc">机身设计精巧便携,操作流程简洁直观。
+适用于酒店客房、更衣室、试衣间等多元场景,构建全方位隐私安全防护网。</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-wind"></i>
                     </div>
-                    <h3 class="feature-title">环境自适应</h3>
-                    <p class="feature-desc">智能监测温湿度、空气质量，自动调节空调、新风系统，创造理想居住环境。</p>
+                    <h3 class="feature-title">智能守护</h3>
+                    <p class="feature-desc">内置动态警报系统,设备启动后放置门边即可激活监测模式。当检测到异常动静时，立即触发高分贝警报,持续12小时实时防护,为您营造安心睡眠环境,让每一晚都无虞可枕。</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3 class="feature-title">全生态兼容</h3>
-                    <p class="feature-desc">支持HomeKit、Google Home、Amazon Alexa等主流平台，兼容2000+智能设备。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="feature-title">智慧节能</h3>
-                    <p class="feature-desc">AI能耗管理系统，优化设备运行时间，降低能耗最高达35%，环保又经济。</p>
-                </div>
+
             </div>
         </div>
 
@@ -974,9 +981,9 @@
         <div id="video" class="video-section">
             <div class="section-header">
                 <h2 class="section-title">产品演示视频</h2>
-                <p class="section-desc">深入了解AI智能家居中枢系统 Pro的强大功能和卓越性能</p>
+                <p class="section-desc">深入了解安维深共享防偷拍探测器强大功能和卓越性能</p>
             </div>
-            
+
             <div class="video-container">
                 <div class="video-player">
                     <video id="productVideo">
@@ -984,29 +991,30 @@
                         您的浏览器不支持视频标签。
                     </video>
                 </div>
-                
+
                 <div class="video-controls">
                     <button class="control-btn play-pause" id="playPauseBtn">
                         <i class="fas fa-play"></i>
                     </button>
-                    
+
                     <div class="progress-container" id="progressContainer">
                         <div class="progress-bar" id="progressBar"></div>
                     </div>
-                    
+
                     <div class="volume-container">
                         <i class="fas fa-volume-up volume-icon"></i>
-                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1"
+                            value="1">
                     </div>
-                    
+
                     <button class="control-btn" id="fullscreenBtn">
                         <i class="fas fa-expand"></i>
                     </button>
                 </div>
-                
+
                 <div class="video-info">
-                    <h3 class="video-title">AI智能家居中枢系统 Pro 全方位演示</h3>
-                    <p class="video-desc">本视频详细展示了安维深AI智能家居中枢系统 Pro的各项功能，包括智能场景设置、语音控制、环境自适应调节和安全防护等功能。系统采用最新一代AI芯片，处理能力较上一代提升200%，支持多设备协同工作。</p>
+                    <h3 class="video-title">安维深共享防偷拍探测器</h3>
+                    <p class="video-desc">本视频详细展示了安维深共享防偷拍探测器使用技巧。</p>
                     <div class="video-timestamp">
                         <span>发布于 2025年6月15日</span>
                         <span>时长: 4:28</span>
@@ -1017,7 +1025,7 @@
 
     </div>
 
- <!-- 底部 -->
+    <!-- 底部 -->
     <div class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -1072,7 +1080,7 @@
         const progressContainer = document.getElementById('progressContainer');
         const volumeSlider = document.getElementById('volumeSlider');
         const fullscreenBtn = document.getElementById('fullscreenBtn');
-        
+
         // 播放/暂停切换
         playPauseBtn.addEventListener('click', () => {
             if (video.paused) {
@@ -1083,25 +1091,25 @@
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
             }
         });
-        
+
         // 更新进度条
         video.addEventListener('timeupdate', () => {
             const progress = (video.currentTime / video.duration) * 100;
             progressBar.style.width = `${progress}%`;
         });
-        
+
         // 点击进度条跳转
         progressContainer.addEventListener('click', (e) => {
             const rect = progressContainer.getBoundingClientRect();
             const pos = (e.clientX - rect.left) / rect.width;
             video.currentTime = pos * video.duration;
         });
-        
+
         // 音量控制
         volumeSlider.addEventListener('input', () => {
             video.volume = volumeSlider.value;
         });
-        
+
         // 全屏功能
         fullscreenBtn.addEventListener('click', () => {
             if (!document.fullscreenElement) {
@@ -1126,34 +1134,34 @@
                 }
             }
         });
-        
+
         // 视频结束时重置按钮
         video.addEventListener('ended', () => {
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
         });
-        
+
         // FAQ 切换功能
         const faqItems = document.querySelectorAll('.faq-item');
-        
+
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', function() {
+
+            question.addEventListener('click', function () {
                 // 关闭其他打开的FAQ
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
                     }
                 });
-                
+
                 // 切换当前FAQ
                 item.classList.toggle('active');
             });
         });
-        
+
         // 订阅表单处理
         const subscribeForm = document.querySelector('.subscribe-form');
-        subscribeForm.addEventListener('submit', function(e) {
+        subscribeForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const emailInput = this.querySelector('.subscribe-input');
 
@@ -1165,22 +1173,22 @@
                 alert('请输入有效的电子邮箱地址！');
             }
         });
-        
+
         // 卡片悬停效果
         const cards = document.querySelectorAll('.feature-card, .buy-option');
         cards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-10px)';
             });
 
-            card.addEventListener('mouseleave', function() {
+            card.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0)';
             });
         });
-        
+
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
@@ -1189,4 +1197,5 @@
         });
     </script>
 </body>
+
 </html>

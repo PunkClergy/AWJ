@@ -574,19 +574,27 @@
             padding: 10px 0;
         }
 
-        .videos-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
+        /* 视频轮播容器 */
+        .video-carousel-container {
+            position: relative;
+            max-width: 900px;
             margin: 0 auto;
-            gap: 40px;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .video-wrapper {
-            flex: 1;
-            min-width: 300px;
-            position: relative;
+        .video-carousel {
+            display: flex;
+            transition: transform 0.8s ease;
+            width: 100%;
+        }
+
+        .video-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .video-container {
@@ -594,7 +602,6 @@
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .video-player {
@@ -654,11 +661,65 @@
 
         .video-caption {
             text-align: center;
-            margin-top: 20px;
-            font-size: 17px;
-            color: #555;
-            font-weight: 500;
-            padding: 0 15px;
+            margin-top: 25px;
+            font-size: 20px;
+            color: #444;
+            font-weight: 600;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .video-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .video-arrow {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .video-arrow:hover {
+            background: #4a9df7;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .video-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .video-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-dot.active {
+            background: #4a9df7;
+            transform: scale(1.2);
         }
 
         .certificates-section {
@@ -1307,10 +1368,6 @@
             .step-card {
                 max-width: 100%;
             }
-
-            .videos-container {
-                gap: 30px;
-            }
             
             .nav-menu {
                 display: none;
@@ -1358,15 +1415,6 @@
 
             .business-form {
                 padding: 30px;
-            }
-
-            .videos-container {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .video-wrapper {
-                min-width: 100%;
             }
             
             .footer-grid {
@@ -1583,46 +1631,86 @@
                 <p>通过视频了解安维深智能家居的实际应用场景</p>
             </div>
 
-            <div class="videos-container">
-                <!-- 第一个视频 -->
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <div class="video-player">
-                            <video id="video1" controls preload="metadata">
-                                <source src="./video/video.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-overlay" id="video-overlay1">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
+            <!-- 视频轮播容器 -->
+            <div class="video-carousel-container">
+                <div class="video-carousel" id="video-carousel">
+                    <!-- 第一个视频 -->
+                    <div class="video-slide">
+                        <div class="video-container">
+                            <div class="video-player">
+                                <video preload="metadata">
+                                    <source src="./video/video2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="video-overlay">
+                                    <div class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="video-caption">
+                            <p>安维深全屋智能系统演示 - 智能照明与安防监控</p>
+                        </div>
                     </div>
-                    <div class="video-caption">
-                        <p>安维深全屋智能系统演示 - 智能照明与安防监控</p>
+
+                    <!-- 第二个视频 -->
+                    <div class="video-slide">
+                        <div class="video-container">
+                            <div class="video-player">
+                                <video preload="metadata">
+                                    <source src="./video/video.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="video-overlay">
+                                    <div class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-caption">
+                            <p>智能家居生活场景 - 语音控制与自动化体验</p>
+                        </div>
+                    </div>
+
+                    <!-- 第三个视频 -->
+                    <div class="video-slide">
+                        <div class="video-container">
+                            <div class="video-player">
+                                <video preload="metadata">
+                                    <source src="./video/video2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="video-overlay">
+                                    <div class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-caption">
+                            <p>智能安防系统 - 全天候家庭安全保障</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 第二个视频 -->
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <div class="video-player">
-                            <video id="video2" controls preload="metadata">
-                                <source src="./video/video2.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-overlay" id="video-overlay2">
-                                <div class="play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </div>
+                <!-- 轮播导航箭头 -->
+                <div class="video-nav">
+                    <div class="video-arrow prev-video">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
-                    <div class="video-caption">
-                        <p>智能家居生活场景 - 语音控制与自动化体验</p>
+                    <div class="video-arrow next-video">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
+            </div>
+
+            <!-- 轮播指示点 -->
+            <div class="video-dots">
+                <div class="video-dot active"></div>
+                <div class="video-dot"></div>
+                <div class="video-dot"></div>
             </div>
         </div>
     </div>
@@ -2086,71 +2174,105 @@
                 });
             });
 
-            // 视频播放功能 - 支持两个视频并互斥播放
-            const video1 = document.getElementById('video1');
-            const videoOverlay1 = document.getElementById('video-overlay1');
-            const video2 = document.getElementById('video2');
-            const videoOverlay2 = document.getElementById('video-overlay2');
+            // 视频轮播功能
+            const videoCarousel = document.getElementById('video-carousel');
+            const videoSlides = document.querySelectorAll('.video-slide');
+            const prevVideo = document.querySelector('.prev-video');
+            const nextVideo = document.querySelector('.next-video');
+            const videoDots = document.querySelectorAll('.video-dot');
 
-            // 点击覆盖层播放视频并暂停另一个视频
-            videoOverlay1.addEventListener('click', function () {
-                video1.play();
-                videoOverlay1.classList.add('hidden');
-                // 暂停第二个视频
-                video2.pause();
-                // 确保第二个视频的覆盖层显示
-                videoOverlay2.classList.remove('hidden');
+            let videoIndex = 0;
+            const videoCount = videoSlides.length;
+
+            // 更新视频轮播位置
+            function updateVideoPosition() {
+                videoCarousel.style.transform = `translateX(-${videoIndex * 100}%)`;
+
+                // 更新指示点状态
+                videoDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === videoIndex);
+                });
+                
+                // 暂停所有视频
+                document.querySelectorAll('video').forEach(video => {
+                    video.pause();
+                    const overlay = video.parentElement.querySelector('.video-overlay');
+                    if (overlay) overlay.classList.remove('hidden');
+                });
+            }
+
+            // 下一个视频
+            function nextVideoSlide() {
+                videoIndex = (videoIndex + 1) % videoCount;
+                updateVideoPosition();
+            }
+
+            // 上一个视频
+            function prevVideoSlide() {
+                videoIndex = (videoIndex - 1 + videoCount) % videoCount;
+                updateVideoPosition();
+            }
+
+            // 自动轮播
+            let videoInterval = setInterval(nextVideoSlide, 5000);
+
+            // 鼠标悬停时暂停自动轮播
+            const videoContainer = document.querySelector('.video-carousel-container');
+            videoContainer.addEventListener('mouseenter', () => {
+                clearInterval(videoInterval);
             });
 
-            videoOverlay2.addEventListener('click', function () {
-                video2.play();
-                videoOverlay2.classList.add('hidden');
-                // 暂停第一个视频
-                video1.pause();
-                // 确保第一个视频的覆盖层显示
-                videoOverlay1.classList.remove('hidden');
+            videoContainer.addEventListener('mouseleave', () => {
+                videoInterval = setInterval(nextVideoSlide, 5000);
             });
 
-            // 监听视频播放事件，确保互斥播放
-            video1.addEventListener('play', function () {
-                // 如果第二个视频正在播放，则暂停它
-                if (!video2.paused) {
-                    video2.pause();
-                    // 显示第二个视频的覆盖层
-                    videoOverlay2.classList.remove('hidden');
-                }
+            // 添加事件监听器
+            nextVideo.addEventListener('click', nextVideoSlide);
+            prevVideo.addEventListener('click', prevVideoSlide);
+
+            // 添加指示点点击事件
+            videoDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    videoIndex = index;
+                    updateVideoPosition();
+                });
             });
 
-            video2.addEventListener('play', function () {
-                // 如果第一个视频正在播放，则暂停它
-                if (!video1.paused) {
-                    video1.pause();
-                    // 显示第一个视频的覆盖层
-                    videoOverlay1.classList.remove('hidden');
-                }
-            });
-
-            // 当视频暂停时显示覆盖层（通过控制条暂停的情况）
-            video1.addEventListener('pause', function () {
-                // 只有当视频不是因为播放结束而暂停时才显示覆盖层
-                if (video1.currentTime > 0 && !video1.ended) {
-                    videoOverlay1.classList.remove('hidden');
-                }
-            });
-
-            video2.addEventListener('pause', function () {
-                if (video2.currentTime > 0 && !video2.ended) {
-                    videoOverlay2.classList.remove('hidden');
-                }
-            });
-
-            // 视频结束时显示覆盖层
-            video1.addEventListener('ended', function () {
-                videoOverlay1.classList.remove('hidden');
-            });
-
-            video2.addEventListener('ended', function () {
-                videoOverlay2.classList.remove('hidden');
+            // 视频播放功能
+            document.querySelectorAll('.video-player video').forEach(video => {
+                const overlay = video.parentElement.querySelector('.video-overlay');
+                
+                // 点击覆盖层播放视频
+                overlay.addEventListener('click', function() {
+                    video.play();
+                    overlay.classList.add('hidden');
+                    
+                    // 暂停其他视频
+                    document.querySelectorAll('.video-player video').forEach(v => {
+                        if (v !== video) {
+                            v.pause();
+                            const otherOverlay = v.parentElement.querySelector('.video-overlay');
+                            if (otherOverlay) otherOverlay.classList.remove('hidden');
+                        }
+                    });
+                });
+                
+                // 当视频播放时隐藏覆盖层
+                video.addEventListener('play', function() {
+                    overlay.classList.add('hidden');
+                });
+                
+                // 当视频暂停时显示覆盖层（除非是播放结束）
+                video.addEventListener('pause', function() {
+                    if (!video.ended) {
+                        overlay.classList.remove('hidden');
+                    }
+                });
+                
+                // 当视频结束时显示覆盖层
+                video.addEventListener('ended', function() {
+                    overlay.classList.remove('hidden');
+                });
             });
 
             // 合作案例轮播功能

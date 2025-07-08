@@ -372,6 +372,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .add-to-cart:hover {
@@ -597,6 +598,9 @@
         }
 
         .modal-add-to-cart {
+             display: flex;
+            justify-content: center;
+            text-decoration: none;
             flex: 1;
             padding: 12px 25px;
             background: #4a9df7;
@@ -609,6 +613,9 @@
         }
 
         .modal-add-to-cart:hover {
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
             background: #3a8de6;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(74, 157, 247, 0.4);
@@ -831,8 +838,8 @@
     <!-- 产品中心Banner -->
     <section class="products-banner">
         <div class="banner-content">
-            <h1>智能家居产品中心</h1>
-            <p>探索安维深科技创新的智能家居产品系列，打造您的智慧生活</p>
+            <h1>安维深产品中心</h1>
+            <p>探索安维深科技创新的产品系列，打造您的安全生活</p>
         </div>
     </section>
 
@@ -841,142 +848,32 @@
         <div class="container">
             <div class="section-title">
                 <h2>我们的产品</h2>
-                <p>精选智能家居产品，满足您对智慧生活的所有想象</p>
+                <p>精选安维深产品，满足您对安全生活的所有想象</p>
             </div>
-            <!-- 产品分类 -->
-            <!-- <div class="categories">
-                <button class="category-btn active">全部产品</button>
-                <button class="category-btn">智能安防</button>
-                <button class="category-btn">环境控制</button>
-                <button class="category-btn">智能照明</button>
-                <button class="category-btn">影音娱乐</button>
-                <button class="category-btn">能源管理</button>
-                <button class="category-btn">智能家电</button>
-            </div> -->
+        
             <!-- 产品网格 -->
             <div class="products-grid">
                 <!-- 产品 1 -->
                 <div class="product-card">
                     <div class="product-badge">新品上市</div>
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1595941069915-4ebc5197c14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        <img src="./image/pro/1.jpg"
                             alt="智能门锁">
                         <div class="product-overlay">
                             <button class="quick-view-btn" data-id="1">快速查看</button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <div class="product-category">智能安防</div>
-                        <h3 class="product-name">AI人脸识别智能门锁</h3>
-                        <p class="product-description">3D人脸识别技术，0.3秒快速开锁，支持指纹、密码、手机远程开锁等多种方式</p>
+                        <div class="product-category">防偷拍探测器</div>
+                        <h3 class="product-name">安维深共享防偷拍探测器</h3>
+                        <p class="product-description">共享产品，单次使用价格8.99元，单次时间为12小时</p>
                         <div class="product-footer">
-                            <div class="product-price">¥1,899</div>
-                            <button class="add-to-cart">加入询价</button>
+                            <div class="product-price">¥100</div>
+                            <a class="add-to-cart" href="./about.html">联系我们</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- 产品 2 -->
-                <div class="product-card">
-                    <div class="product-badge">热销产品</div>
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1545127398-14699f92334b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="智能面板">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn" data-id="2">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">环境控制</div>
-                        <h3 class="product-name">智能家居控制面板</h3>
-                        <p class="product-description">10.1英寸高清触摸屏，语音控制，集成全屋智能设备控制，场景一键切换</p>
-                        <div class="product-footer">
-                            <div class="product-price">¥2,499</div>
-                            <button class="add-to-cart">联系我们</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 产品 3 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1576153192396-180ecef15ba4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="智能灯泡">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn" data-id="3">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">智能照明</div>
-                        <h3 class="product-name">RGB全彩智能灯泡</h3>
-                        <p class="product-description">1600万色可选，语音控制，音乐律动，支持Apple HomeKit和Google Home</p>
-                        <div class="product-footer">
-                            <div class="product-price">¥129</div>
-                            <button class="add-to-cart">联系我们</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 产品 4 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1591370874773-6702e8f12fd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="智能摄像头">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn" data-id="4">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">智能安防</div>
-                        <h3 class="product-name">360°全景云台摄像头</h3>
-                        <p class="product-description">4K超清画质，AI人形追踪，双向语音，智能警报，夜视距离达30米</p>
-                        <div class="product-footer">
-                            <div class="product-price">¥699</div>
-                            <button class="add-to-cart">联系我们</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 产品 5 -->
-                <div class="product-card">
-                    <div class="product-badge">限时优惠</div>
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="智能窗帘">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn" data-id="5">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">智能家电</div>
-                        <h3 class="product-name">智能电动窗帘电机</h3>
-                        <p class="product-description">静音设计，支持语音控制、定时开关、场景联动，适配多种窗帘轨道</p>
-                        <div class="product-footer">
-                            <div class="product-price">¥799</div>
-                            <button class="add-to-cart">联系我们</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 产品 6 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="智能插座">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn" data-id="6">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">能源管理</div>
-                        <h3 class="product-name">智能WiFi插座</h3>
-                        <p class="product-description">远程控制，定时开关，电量统计，语音控制，让传统家电秒变智能</p>
-                        <div class="product-footer">
-                            <div class="product-price">¥89</div>
-                            <button class="add-to-cart">联系我们</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -991,53 +888,45 @@
                 <div class="modal-gallery">
                     <div class="main-image">
                         <img id="mainImage"
-                            src="https://images.unsplash.com/photo-1595941069915-4ebc5197c14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            src="./image/pro/1.jpg"
                             alt="产品大图">
                     </div>
                     <div class="thumbnails">
+                         <div class="thumbnail active">
+                            <img src="./image/pro/1.jpg"
+                                alt="产品图1">
+                        </div>
                         <div class="thumbnail active">
-                            <img src="https://images.unsplash.com/photo-1595941069915-4ebc5197c14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            <img src="./image/pro/2.jpg"
                                 alt="产品图1">
                         </div>
                         <div class="thumbnail">
-                            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            <img src="image/pro/3.jpg"
                                 alt="产品图2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://images.unsplash.com/photo-1556228720-195a672e3a07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="产品图3">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://images.unsplash.com/photo-1586448900401-a9d7e9f61e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="产品图4">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
-                    <div class="modal-category">智能安防</div>
-                    <h2 class="modal-title">AI人脸识别智能门锁</h2>
-                    <div class="modal-price">¥1,899</div>
+                    <div class="modal-category">防偷拍探测器</div>
+                    <h2 class="modal-title">安维深共享防偷拍探测器</h2>
+                    <div class="modal-price">¥100</div>
                     <p class="modal-description">
-                        安维深AI人脸识别智能门锁采用先进的3D结构光人脸识别技术，0.3秒快速开锁，误识率低于0.0001%。支持指纹、密码、手机远程开锁、NFC卡片、机械钥匙等多种开锁方式。内置高清广角摄像头，可实时查看门前情况，异常情况自动录像报警。
+                      目前定价：共享产品，单次使用价格8.99元，单次时间为12小时
                     </p>
 
                     <div class="features">
                         <h4>产品特点</h4>
                         <ul>
-                            <li>3D结构光人脸识别技术，安全可靠</li>
-                            <li>0.3秒极速开锁，无感通行</li>
-                            <li>支持指纹、密码、手机远程开锁等多种方式</li>
-                            <li>内置1080P高清摄像头，红外夜视功能</li>
-                            <li>异常开锁报警，远程手机通知</li>
-                            <li>防猫眼开锁，防小黑盒攻击</li>
-                            <li>C级锁芯，安全等级最高</li>
-                            <li>5000mAh大容量电池，超长续航</li>
+                            <li>超长续航与精准测距</li>
+                            <li>智能红外探测技术</li>
+                            <li>全场景灵活适配</li>
+                            <li>智能守护</li>
                         </ul>
                     </div>
 
                     <div class="modal-actions">
 
-                        <button class="modal-add-to-cart">联系我们</button>
+                        <a class="modal-add-to-cart" href="./about.html">联系我们</a>
                     </div>
                 </div>
             </div>
@@ -1177,52 +1066,7 @@
             quantityInput.value = value + 1;
         });
 
-        // 加入询价单功能
-        const addToCartBtns = document.querySelectorAll('.add-to-cart');
-        addToCartBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const productCard = this.closest('.product-card');
-                const productName = productCard.querySelector('.product-name').textContent;
-
-                // 创建通知元素
-                const notification = document.createElement('div');
-                notification.textContent = `已添加 "${productName}" 到询价单`;
-                notification.style.cssText = `
-                    position: fixed;
-                    bottom: 30px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background: #4a9df7;
-                    color: white;
-                    padding: 15px 30px;
-                    border-radius: 50px;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                    z-index: 1000;
-                    opacity: 0;
-                    transition: opacity 0.3s, bottom 0.3s;
-                `;
-
-                document.body.appendChild(notification);
-
-                // 显示通知
-                setTimeout(() => {
-                    notification.style.opacity = '1';
-                    notification.style.bottom = '50px';
-                }, 10);
-
-                // 隐藏通知
-                setTimeout(() => {
-                    notification.style.opacity = '0';
-                    notification.style.bottom = '30px';
-
-                    // 移除通知
-                    setTimeout(() => {
-                        document.body.removeChild(notification);
-                    }, 300);
-                }, 3000);
-            });
-        });
-    </script>
+  </script>
 </body>
 
 </html>

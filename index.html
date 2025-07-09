@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
+        /* 原始CSS保持不变 */
         * {
             margin: 0;
             padding: 0;
@@ -2057,17 +2058,17 @@
                     <h4>产品中心</h4>
                     <ul>
                         <li><a href="./product.html">产品介绍</a></li>
-                        <li><a href="#">使用技巧</a></li>
+                        <li><a href="manual.html">使用技巧</a></li>
                         <li><a href="./patent.html">产品专利</a></li>
-                        <li><a href="#">新品上市</a></li>
+                        <li><a href="new-product.html">新品上市</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>关于我们</h4>
                     <ul>
-                        <li><a href="./about.html">公司简介</a></li>
-                        <li><a href="./news.html">新闻中心</a></li>
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="news.html">新闻中心</a></li>
                         <li><a href="contact.html">联系我们</a></li>
                         <li><a href="partners.html">合作案例</a></li>
                     </ul>
@@ -2096,353 +2097,309 @@
         </div>
     </div>
 
+    <!-- 引入jQuery库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
-        // 移动端菜单功能
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-        
-        // 监听滚动事件 - 导航栏效果
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Banner轮播功能
-        document.addEventListener('DOMContentLoaded', function () {
-            // Banner轮播
-            const bannerSlider = document.getElementById('banner-slider');
-            const bannerSlides = document.querySelectorAll('.banner-slide');
-            const bannerDots = document.querySelectorAll('.banner-dot');
-            const prevBanner = document.querySelector('.prev-banner');
-            const nextBanner = document.querySelector('.next-banner');
-
+        $(document).ready(function() {
+            // 移动端菜单功能
+            $('#mobileMenuBtn').click(function() {
+                $('#mobileMenu').toggleClass('active');
+            });
+            
+            // 监听滚动事件 - 导航栏效果
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 50) {
+                    $('.header').addClass('scrolled');
+                } else {
+                    $('.header').removeClass('scrolled');
+                }
+            });
+            
+            // Banner轮播功能
             let bannerIndex = 0;
-            const bannerCount = bannerSlides.length;
-
+            const $bannerSlider = $('#banner-slider');
+            const $bannerSlides = $('.banner-slide');
+            const $bannerDots = $('.banner-dot');
+            const bannerCount = $bannerSlides.length;
+            let bannerInterval;
+            
             // 更新banner位置
             function updateBannerPosition() {
-                bannerSlider.style.transform = `translateX(-${bannerIndex * 100}%)`;
-
-                // 更新指示点状态
-                bannerDots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === bannerIndex);
-                });
+                $bannerSlider.css('transform', `translateX(-${bannerIndex * 100}%)`);
+                $bannerDots.removeClass('active').eq(bannerIndex).addClass('active');
             }
-
+            
             // 下一个banner
             function nextBannerSlide() {
                 bannerIndex = (bannerIndex + 1) % bannerCount;
                 updateBannerPosition();
             }
-
+            
             // 上一个banner
             function prevBannerSlide() {
                 bannerIndex = (bannerIndex - 1 + bannerCount) % bannerCount;
                 updateBannerPosition();
             }
-
+            
             // 自动轮播
-            let bannerInterval = setInterval(nextBannerSlide, 5000);
-
-            // 鼠标悬停时暂停自动轮播
-            const bannerContainer = document.querySelector('.banner-container');
-            bannerContainer.addEventListener('mouseenter', () => {
-                clearInterval(bannerInterval);
-            });
-
-            bannerContainer.addEventListener('mouseleave', () => {
+            function startBannerInterval() {
                 bannerInterval = setInterval(nextBannerSlide, 5000);
-            });
-
+            }
+            
             // 添加事件监听器
-            nextBanner.addEventListener('click', nextBannerSlide);
-            prevBanner.addEventListener('click', prevBannerSlide);
-
+            $('.next-banner').click(nextBannerSlide);
+            $('.prev-banner').click(prevBannerSlide);
+            
             // 添加指示点点击事件
-            bannerDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    bannerIndex = index;
-                    updateBannerPosition();
-                });
+            $bannerDots.click(function() {
+                bannerIndex = $(this).index();
+                updateBannerPosition();
             });
-
+            
+            // 鼠标悬停时暂停自动轮播
+            $('.banner-container')
+                .mouseenter(() => clearInterval(bannerInterval))
+                .mouseleave(startBannerInterval);
+            
+            startBannerInterval();
+            
             // 视频轮播功能
-            const videoCarousel = document.getElementById('video-carousel');
-            const videoSlides = document.querySelectorAll('.video-slide');
-            const prevVideo = document.querySelector('.prev-video');
-            const nextVideo = document.querySelector('.next-video');
-            const videoDots = document.querySelectorAll('.video-dot');
-
             let videoIndex = 0;
-            const videoCount = videoSlides.length;
-
+            const $videoCarousel = $('#video-carousel');
+            const $videoSlides = $('.video-slide');
+            const $videoDots = $('.video-dot');
+            const videoCount = $videoSlides.length;
+            let videoInterval;
+            
             // 更新视频轮播位置
             function updateVideoPosition() {
-                videoCarousel.style.transform = `translateX(-${videoIndex * 100}%)`;
-
-                // 更新指示点状态
-                videoDots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === videoIndex);
-                });
+                $videoCarousel.css('transform', `translateX(-${videoIndex * 100}%)`);
+                $videoDots.removeClass('active').eq(videoIndex).addClass('active');
                 
                 // 暂停所有视频
-                document.querySelectorAll('video').forEach(video => {
-                    video.pause();
-                    const overlay = video.parentElement.querySelector('.video-overlay');
-                    if (overlay) overlay.classList.remove('hidden');
+                $('video').each(function() {
+                    $(this).get(0).pause();
+                    $(this).siblings('.video-overlay').removeClass('hidden');
                 });
             }
-
+            
             // 下一个视频
             function nextVideoSlide() {
                 videoIndex = (videoIndex + 1) % videoCount;
                 updateVideoPosition();
             }
-
+            
             // 上一个视频
             function prevVideoSlide() {
                 videoIndex = (videoIndex - 1 + videoCount) % videoCount;
                 updateVideoPosition();
             }
-
+            
             // 自动轮播
-            let videoInterval = setInterval(nextVideoSlide, 5000);
-
-            // 鼠标悬停时暂停自动轮播
-            const videoContainer = document.querySelector('.video-carousel-container');
-            videoContainer.addEventListener('mouseenter', () => {
-                clearInterval(videoInterval);
-            });
-
-            videoContainer.addEventListener('mouseleave', () => {
+            function startVideoInterval() {
                 videoInterval = setInterval(nextVideoSlide, 5000);
-            });
-
+            }
+            
             // 添加事件监听器
-            nextVideo.addEventListener('click', nextVideoSlide);
-            prevVideo.addEventListener('click', prevVideoSlide);
-
+            $('.next-video').click(nextVideoSlide);
+            $('.prev-video').click(prevVideoSlide);
+            
             // 添加指示点点击事件
-            videoDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    videoIndex = index;
-                    updateVideoPosition();
+            $videoDots.click(function() {
+                videoIndex = $(this).index();
+                updateVideoPosition();
+            });
+            
+            // 鼠标悬停时暂停自动轮播
+            $('.video-carousel-container')
+                .mouseenter(() => clearInterval(videoInterval))
+                .mouseleave(startVideoInterval);
+            
+            startVideoInterval();
+            
+            // 视频播放功能
+            $('.video-overlay').click(function() {
+                const $video = $(this).siblings('video').get(0);
+                $video.play();
+                $(this).addClass('hidden');
+                
+                // 暂停其他视频
+                $('video').not($video).each(function() {
+                    $(this).get(0).pause();
+                    $(this).siblings('.video-overlay').removeClass('hidden');
                 });
             });
-
-            // 视频播放功能
-            document.querySelectorAll('.video-player video').forEach(video => {
-                const overlay = video.parentElement.querySelector('.video-overlay');
+            
+            $('video').each(function() {
+                const $video = $(this);
+                const $overlay = $video.siblings('.video-overlay');
                 
-                // 点击覆盖层播放视频
-                overlay.addEventListener('click', function() {
-                    video.play();
-                    overlay.classList.add('hidden');
-                    
-                    // 暂停其他视频
-                    document.querySelectorAll('.video-player video').forEach(v => {
-                        if (v !== video) {
-                            v.pause();
-                            const otherOverlay = v.parentElement.querySelector('.video-overlay');
-                            if (otherOverlay) otherOverlay.classList.remove('hidden');
-                        }
-                    });
+                $video.on('play', function() {
+                    $overlay.addClass('hidden');
                 });
                 
-                // 当视频播放时隐藏覆盖层
-                video.addEventListener('play', function() {
-                    overlay.classList.add('hidden');
-                });
-                
-                // 当视频暂停时显示覆盖层（除非是播放结束）
-                video.addEventListener('pause', function() {
-                    if (!video.ended) {
-                        overlay.classList.remove('hidden');
+                $video.on('pause', function() {
+                    if (!this.ended) {
+                        $overlay.removeClass('hidden');
                     }
                 });
                 
-                // 当视频结束时显示覆盖层
-                video.addEventListener('ended', function() {
-                    overlay.classList.remove('hidden');
+                $video.on('ended', function() {
+                    $overlay.removeClass('hidden');
                 });
             });
-
+            
             // 合作案例轮播功能
-            const slider = document.getElementById('slider');
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-
             let currentIndex = 0;
-            const slideCount = slides.length;
-
+            const $slider = $('#slider');
+            const $slides = $('.slide');
+            const $dots = $('.dot');
+            const slideCount = $slides.length;
+            let slideInterval;
+            
             // 更新轮播位置
             function updateSlidePosition() {
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-                // 更新指示点状态
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
+                $slider.css('transform', `translateX(-${currentIndex * 100}%)`);
+                $dots.removeClass('active').eq(currentIndex).addClass('active');
             }
-
+            
             // 下一个案例
             function nextSlide() {
                 currentIndex = (currentIndex + 1) % slideCount;
                 updateSlidePosition();
             }
-
+            
             // 上一个案例
             function prevSlide() {
                 currentIndex = (currentIndex - 1 + slideCount) % slideCount;
                 updateSlidePosition();
             }
-
+            
             // 自动轮播
-            let slideInterval = setInterval(nextSlide, 5000);
-
-            // 鼠标悬停时暂停自动轮播
-            const sliderContainer = document.querySelector('.cases-container');
-            sliderContainer.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
-
-            sliderContainer.addEventListener('mouseleave', () => {
+            function startSlideInterval() {
                 slideInterval = setInterval(nextSlide, 5000);
-            });
-
+            }
+            
             // 添加事件监听器
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-
+            $('.next').click(nextSlide);
+            $('.prev').click(prevSlide);
+            
             // 添加指示点点击事件
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateSlidePosition();
-                });
+            $dots.click(function() {
+                currentIndex = $(this).index();
+                updateSlidePosition();
             });
-
+            
+            // 鼠标悬停时暂停自动轮播
+            $('.cases-container')
+                .mouseenter(() => clearInterval(slideInterval))
+                .mouseleave(startSlideInterval);
+            
+            startSlideInterval();
+            
             // 卡片悬停效果
-            const cards = document.querySelectorAll('.product-card, .service-card, .certificate-card, .quick-link-item, .business-card, .step-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    if (this.classList.contains('quick-link-item') || this.classList.contains('business-card') || this.classList.contains('step-card')) {
-                        this.style.transform = 'translateY(-5px)';
+            const $cards = $('.product-card, .service-card, .certificate-card, .quick-link-item, .business-card, .step-card');
+            
+            $cards.hover(
+                function() {
+                    const $card = $(this);
+                    if ($card.hasClass('quick-link-item') || $card.hasClass('business-card') || $card.hasClass('step-card')) {
+                        $card.css('transform', 'translateY(-5px)');
                     } else {
-                        this.style.transform = 'translateY(-10px)';
+                        $card.css('transform', 'translateY(-10px)');
                     }
-
-                    this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    this.style.transform = 'translateY(0)';
-
-                    if (this.classList.contains('quick-link-item')) {
-                        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
-                    } else if (this.classList.contains('business-card') || this.classList.contains('step-card')) {
-                        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
+                    $card.css('box-shadow', '0 15px 35px rgba(0, 0, 0, 0.15)');
+                },
+                function() {
+                    const $card = $(this);
+                    $card.css('transform', 'translateY(0)');
+                    
+                    if ($card.hasClass('quick-link-item')) {
+                        $card.css('box-shadow', '0 10px 30px rgba(0, 0, 0, 0.08)');
+                    } else if ($card.hasClass('business-card') || $card.hasClass('step-card')) {
+                        $card.css('box-shadow', '0 10px 30px rgba(0, 0, 0, 0.05)');
                     } else {
-                        this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.08)';
+                        $card.css('box-shadow', '0 8px 25px rgba(0, 0, 0, 0.08)');
                     }
-                });
-            });
-
+                }
+            );
+            
             // 资质证明轮播功能
-            const certificatesTrack = document.getElementById('certificates-track');
-            const certificateSlides = document.querySelectorAll('.certificate-slide');
-            const prevCertificates = document.querySelector('.prev-certificates');
-            const nextCertificates = document.querySelector('.next-certificates');
-            const certificatesDots = document.getElementById('certificates-dots');
-
             let certificatesIndex = 0;
-            const certificatesCount = certificateSlides.length;
+            const $certificatesTrack = $('#certificates-track');
+            const $certificateSlides = $('.certificate-slide');
+            const certificatesCount = $certificateSlides.length;
             const slidesPerView = 3; // 初始展示3个
-
+            let certificatesInterval;
+            
             // 创建点指示器
             function createDots() {
-                certificatesDots.innerHTML = '';
                 const totalDots = Math.ceil(certificatesCount / slidesPerView);
-
+                $('#certificates-dots').empty();
+                
                 for (let i = 0; i < totalDots; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'certificate-dot';
+                    const $dot = $('<div class="certificate-dot"></div>');
                     if (i === certificatesIndex) {
-                        dot.classList.add('active');
+                        $dot.addClass('active');
                     }
-
-                    dot.addEventListener('click', () => {
+                    
+                    $dot.click(() => {
                         certificatesIndex = i;
                         updateCertificatesPosition();
                     });
-
-                    certificatesDots.appendChild(dot);
+                    
+                    $('#certificates-dots').append($dot);
                 }
             }
-
+            
             // 更新轮播位置
             function updateCertificatesPosition() {
-                const slideWidth = certificateSlides[0].offsetWidth + 30; // 30px是gap值
-                certificatesTrack.style.transform = `translateX(-${certificatesIndex * slideWidth * slidesPerView}px)`;
-
+                const slideWidth = $certificateSlides.eq(0).outerWidth(true);
+                $certificatesTrack.css('transform', `translateX(-${certificatesIndex * slideWidth * slidesPerView}px)`);
+                
                 // 更新点指示器
-                document.querySelectorAll('.certificate-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === certificatesIndex);
-                });
+                $('.certificate-dot').removeClass('active').eq(certificatesIndex).addClass('active');
             }
-
+            
             // 下一个证书
             function nextCertificatesSlide() {
                 const maxIndex = Math.floor(certificatesCount / slidesPerView) - 1;
                 certificatesIndex = (certificatesIndex + 1) % (maxIndex + 1);
                 updateCertificatesPosition();
             }
-
+            
             // 上一个证书
             function prevCertificatesSlide() {
                 const maxIndex = Math.floor(certificatesCount / slidesPerView) - 1;
                 certificatesIndex = (certificatesIndex - 1 + maxIndex + 1) % (maxIndex + 1);
                 updateCertificatesPosition();
             }
-
-            // 添加事件监听器
-            prevCertificates.addEventListener('click', prevCertificatesSlide);
-            nextCertificates.addEventListener('click', nextCertificatesSlide);
-
+            
             // 自动轮播
-            let certificatesInterval = setInterval(nextCertificatesSlide, 5000);
-
-            // 鼠标悬停时暂停自动轮播
-            const certificatesContainer = document.querySelector('.certificates-container');
-            certificatesContainer.addEventListener('mouseenter', () => {
-                clearInterval(certificatesInterval);
-            });
-
-            certificatesContainer.addEventListener('mouseleave', () => {
+            function startCertificatesInterval() {
                 certificatesInterval = setInterval(nextCertificatesSlide, 5000);
-            });
-
-            // 初始化点指示器
+            }
+            
+            // 添加事件监听器
+            $('.prev-certificates').click(prevCertificatesSlide);
+            $('.next-certificates').click(nextCertificatesSlide);
+            
+            // 鼠标悬停时暂停自动轮播
+            $('.certificates-container')
+                .mouseenter(() => clearInterval(certificatesInterval))
+                .mouseleave(startCertificatesInterval);
+            
+            // 初始化点指示器和位置
             createDots();
-
+            updateCertificatesPosition();
+            startCertificatesInterval();
+            
             // 响应式调整
-            function handleResize() {
+            $(window).resize(function() {
                 createDots();
                 updateCertificatesPosition();
-            }
-
-            // 监听窗口大小变化
-            window.addEventListener('resize', handleResize);
+            });
         });
     </script>
 </body>

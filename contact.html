@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -458,7 +459,7 @@
             .contact-container {
                 flex-direction: column;
             }
-            
+
             .contact-form {
                 width: 100%;
             }
@@ -472,7 +473,7 @@
             .banner-content p {
                 font-size: 18px;
             }
-            
+
             .info-grid {
                 grid-template-columns: 1fr;
             }
@@ -486,12 +487,13 @@
             .logo {
                 font-size: 24px;
             }
-            
+
             .subscribe-form {
                 flex-direction: column;
             }
-            
-            .contact-info, .contact-form {
+
+            .contact-info,
+            .contact-form {
                 padding: 25px;
             }
         }
@@ -520,7 +522,7 @@
     <section class="contact-banner">
         <div class="banner-content">
             <h1>联系我们</h1>
-            <p>我们期待与您沟通，共同创造智能家居的未来</p>
+            <p>我们期待与您沟通，共同创造安全的未来</p>
         </div>
     </section>
 
@@ -529,7 +531,7 @@
         <!-- 联系信息 -->
         <div class="contact-info">
             <h2 class="section-title">联系信息</h2>
-            
+
             <div class="info-grid">
                 <div class="info-card">
                     <div class="info-icon">
@@ -537,41 +539,42 @@
                     </div>
                     <div class="info-content">
                         <h3>公司地址</h3>
-                        <p>深圳市南山区科技园南区R3-B栋<br>安维深科技大厦，518057</p>
+                        <p>重庆市江北区金融城3号T2楼9楼
+                        </p>
                     </div>
                 </div>
-                
+
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <div class="info-content">
                         <h3>联系电话</h3>
-                        <p>客服热线：400-888-8888<br>商务合作：0755-8888 9999</p>
+                        <p>客服热线：4006766678<br>商务合作：4006766678</p>
                     </div>
                 </div>
-                
+
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="info-content">
                         <h3>电子邮箱</h3>
-                        <p>客服咨询：support@avision.com<br>商务合作：business@avision.com</p>
+                        <p>客服咨询：472322318@qq.com<br>商务合作：472322318@qq.com</p>
                     </div>
                 </div>
-                
+
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-headset"></i>
                     </div>
                     <div class="info-content">
                         <h3>技术支持</h3>
-                        <p>技术咨询：tech@avision.com<br>服务时间：9:00-21:00</p>
+                        <p>技术咨询：4006766678<br>服务时间：9:00-21:00</p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- 工作时间 -->
             <div class="working-hours">
                 <h2 class="section-title">工作时间</h2>
@@ -590,7 +593,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <!-- 社交媒体 -->
             <div class="social-contact">
                 <h2 class="section-title">关注我们</h2>
@@ -601,28 +604,28 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 联系表单 -->
         <div class="contact-form">
             <h2 class="section-title">发送消息</h2>
             <p>请填写以下表单，我们会尽快回复您</p>
-            
+
             <form id="contactForm">
                 <div class="form-group">
                     <label for="name">您的姓名</label>
                     <input type="text" id="name" class="form-control" placeholder="请输入姓名" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">电子邮箱</label>
                     <input type="email" id="email" class="form-control" placeholder="请输入邮箱" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phone">联系电话</label>
                     <input type="tel" id="phone" class="form-control" placeholder="请输入电话">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="subject">主题</label>
                     <select id="subject" class="form-control">
@@ -634,12 +637,12 @@
                         <option value="other">其他</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="message">留言内容</label>
                     <textarea id="message" class="form-control" placeholder="请输入您的留言内容..." required></textarea>
                 </div>
-                
+
                 <button type="submit" class="submit-btn">
                     <i class="fas fa-paper-plane"></i> 发送消息
                 </button>
@@ -697,25 +700,25 @@
     <script>
         // 表单提交处理
         const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
+
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // 获取表单数据
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
-            
+
             // 显示成功消息
             alert(`感谢您的留言，${name}！\n我们会尽快通过 ${email} 回复您关于 ${subject} 的咨询。`);
-            
+
             // 重置表单
             contactForm.reset();
         });
-        
+
         // 订阅表单处理
         const subscribeForm = document.querySelector('.subscribe-form');
-        subscribeForm.addEventListener('submit', function(e) {
+        subscribeForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const emailInput = this.querySelector('.subscribe-input');
 
@@ -729,4 +732,5 @@
         });
     </script>
 </body>
+
 </html>

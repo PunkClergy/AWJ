@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新品上市 - 安维深科技</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -1073,129 +1073,122 @@
     </div>
 
     <script>
-        // 视频播放器功能
-        const video = document.getElementById('productVideo');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const progressBar = document.getElementById('progressBar');
-        const progressContainer = document.getElementById('progressContainer');
-        const volumeSlider = document.getElementById('volumeSlider');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        $(document).ready(function() {
+            // 视频播放器功能
+            const video = document.getElementById('productVideo');
+            const $playPauseBtn = $('#playPauseBtn');
+            const $progressBar = $('#progressBar');
+            const $progressContainer = $('#progressContainer');
+            const $volumeSlider = $('#volumeSlider');
+            const $fullscreenBtn = $('#fullscreenBtn');
 
-        // 播放/暂停切换
-        playPauseBtn.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                video.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
-
-        // 更新进度条
-        video.addEventListener('timeupdate', () => {
-            const progress = (video.currentTime / video.duration) * 100;
-            progressBar.style.width = `${progress}%`;
-        });
-
-        // 点击进度条跳转
-        progressContainer.addEventListener('click', (e) => {
-            const rect = progressContainer.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / rect.width;
-            video.currentTime = pos * video.duration;
-        });
-
-        // 音量控制
-        volumeSlider.addEventListener('input', () => {
-            video.volume = volumeSlider.value;
-        });
-
-        // 全屏功能
-        fullscreenBtn.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) {
-                    video.mozRequestFullScreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
+            // 播放/暂停切换
+            $playPauseBtn.on('click', function() {
+                if (video.paused) {
+                    video.play();
+                    $playPauseBtn.html('<i class="fas fa-pause"></i>');
+                } else {
+                    video.pause();
+                    $playPauseBtn.html('<i class="fas fa-play"></i>');
                 }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
-        });
+            });
 
-        // 视频结束时重置按钮
-        video.addEventListener('ended', () => {
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        });
+            // 更新进度条
+            $(video).on('timeupdate', function() {
+                const progress = (video.currentTime / video.duration) * 100;
+                $progressBar.css('width', `${progress}%`);
+            });
 
-        // FAQ 切换功能
-        const faqItems = document.querySelectorAll('.faq-item');
+            // 点击进度条跳转
+            $progressContainer.on('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const pos = (e.clientX - rect.left) / rect.width;
+                video.currentTime = pos * video.duration;
+            });
 
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+            // 音量控制
+            $volumeSlider.on('input', function() {
+                video.volume = $(this).val();
+            });
 
-            question.addEventListener('click', function () {
-                // 关闭其他打开的FAQ
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
+            // 全屏功能
+            $fullscreenBtn.on('click', function() {
+                if (!document.fullscreenElement) {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.mozRequestFullScreen) {
+                        video.mozRequestFullScreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
                     }
-                });
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+            });
 
+            // 视频结束时重置按钮
+            $(video).on('ended', function() {
+                $playPauseBtn.html('<i class="fas fa-play"></i>');
+            });
+
+            // FAQ 切换功能
+            $('.faq-question').on('click', function() {
+                const $faqItem = $(this).closest('.faq-item');
+                
+                // 关闭其他打开的FAQ
+                $('.faq-item').not($faqItem).removeClass('active');
+                
                 // 切换当前FAQ
-                item.classList.toggle('active');
-            });
-        });
-
-        // 订阅表单处理
-        const subscribeForm = document.querySelector('.subscribe-form');
-        subscribeForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('.subscribe-input');
-
-            if (emailInput.value.trim() !== '') {
-                // 显示成功消息
-                alert(`感谢订阅！确认邮件已发送至: ${emailInput.value}`);
-                emailInput.value = '';
-            } else {
-                alert('请输入有效的电子邮箱地址！');
-            }
-        });
-
-        // 卡片悬停效果
-        const cards = document.querySelectorAll('.feature-card, .buy-option');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', function () {
-                this.style.transform = 'translateY(-10px)';
+                $faqItem.toggleClass('active');
             });
 
-            card.addEventListener('mouseleave', function () {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            // 订阅表单处理
+            $('.subscribe-form').on('submit', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const $emailInput = $(this).find('.subscribe-input');
+                const emailValue = $emailInput.val().trim();
+
+                if (emailValue !== '') {
+                    // 显示成功消息
+                    alert(`感谢订阅！确认邮件已发送至: ${emailValue}`);
+                    $emailInput.val('');
+                } else {
+                    alert('请输入有效的电子邮箱地址！');
+                }
+            });
+
+            // 卡片悬停效果
+            $('.feature-card, .buy-option').hover(
+                function() {
+                    $(this).css('transform', 'translateY(-10px)');
+                },
+                function() {
+                    $(this).css('transform', 'translateY(0)');
+                }
+            );
+
+            // 平滑滚动
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const target = $(this.getAttribute('href'));
+                
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 800);
+                }
             });
         });
     </script>
 </body>
-
 </html>

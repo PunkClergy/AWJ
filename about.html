@@ -7,6 +7,7 @@
     <title>公司简介 - 安维深科技</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -136,29 +137,6 @@
             animation: fadeInUp 1.2s ease;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #4a9df7;
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(74, 157, 247, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #3a8de6;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(74, 157, 247, 0.6);
-        }
-
         /* 公司概况 */
         .company-overview {
             padding: 100px 0;
@@ -276,192 +254,6 @@
             transform: scale(1.05);
         }
 
-        /* 发展历程 */
-        .history-section {
-            padding: 100px 0;
-            background: #f8f9fa;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .history-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: #4a9df7;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 60px;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 70px;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 70px;
-        }
-
-        .timeline-content {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .timeline-year {
-            position: absolute;
-            top: 20px;
-            width: 80px;
-            height: 80px;
-            background: #4a9df7;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 22px;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-year {
-            right: -40px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-year {
-            left: -40px;
-        }
-
-        .timeline-content h3 {
-            font-size: 24px;
-            color: #222;
-            margin-bottom: 15px;
-        }
-
-        .timeline-content p {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* 团队介绍 */
-        .team-section {
-            padding: 100px 0;
-            background: #fff;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
-
-        .team-member {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .member-image {
-            height: 320px;
-            overflow: hidden;
-        }
-
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .team-member:hover .member-image img {
-            transform: scale(1.1);
-        }
-
-        .member-info {
-            padding: 25px;
-            text-align: center;
-        }
-
-        .member-name {
-            font-size: 24px;
-            color: #222;
-            margin-bottom: 8px;
-        }
-
-        .member-position {
-            font-size: 18px;
-            color: #4a9df7;
-            margin-bottom: 15px;
-        }
-
-        .member-bio {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #f0f7ff;
-            color: #4a9df7;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #4a9df7;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
         /* 底部 */
         .footer {
             background: #222;
@@ -506,14 +298,6 @@
             color: #4a9df7;
         }
 
-        .signature {
-            font-family: 'Pacifico', cursive;
-            font-size: 24px;
-            color: #fff;
-            margin-top: 20px;
-            text-align: right;
-        }
-
         .footer-bottom {
             padding-top: 40px;
             border-top: 1px solid #444;
@@ -555,29 +339,6 @@
                 order: -1;
                 max-width: 600px;
                 margin: 0 auto;
-            }
-
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 0;
-                text-align: left;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                left: 0;
-                padding-right: 0;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-year,
-            .timeline-item:nth-child(even) .timeline-year {
-                left: -40px;
-                right: auto;
             }
         }
 
@@ -655,10 +416,6 @@
             .stat-number {
                 font-size: 36px;
             }
-
-            .member-image {
-                height: 280px;
-            }
         }
     </style>
 </head>
@@ -697,7 +454,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>公司概况</h2>
-                <p>安维深科技</p>
+                <p>安维居共享防偷拍探测器</p>
             </div>
 
             <div class="overview-content">
@@ -710,10 +467,6 @@
                     </p>
 
                     <div class="overview-stats">
-                        <!-- <div class="stat-item">
-                            <div class="stat-number">新生科技</div>
-                            <div class="stat-label">年行业经验</div>
-                        </div> -->
                         <div class="stat-item">
                             <div class="stat-number">3</div>
                             <div class="stat-label">专利技术</div>
@@ -736,9 +489,6 @@
             </div>
         </div>
     </section>
-
-
-
 
     <!-- 底部 -->
     <div class="footer">
@@ -767,9 +517,9 @@
                 <div class="footer-col">
                     <h4>联系我们</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 深圳市南山区科技园</li>
-                        <li><i class="fas fa-phone"></i> 400-888-8888</li>
-                        <li><i class="fas fa-envelope"></i> contact@avision.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 重庆市两江新区互联网产业园</li>
+                        <li><i class="fas fa-phone"></i> 400-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> contact@avision-tech.com</li>
                         <li>
                             <div style="display: flex; gap: 20px; margin-top: 20px;">
                                 <a href="#" style="font-size: 24px;"><i class="fab fa-weixin"></i></a>
@@ -781,39 +531,37 @@
             </div>
 
             <div class="footer-bottom">
-                <p>版权所有 © 安维深科技 2010-2025。保留一切权利。粤ICP备12345678号</p>
+                <p>版权所有 © 安维深科技 2025-2028。保留一切权利。渝ICP备202588888号</p>
                 <p style="margin-top: 15px;">隐私政策 | 使用条款 | 法律声明 | 网站地图</p>
             </div>
         </div>
     </div>
 
     <script>
-        // 监听滚动事件 - 导航栏效果
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        $(document).ready(function() {
+            // 监听滚动事件 - 导航栏效果
+            $(window).scroll(function() {
+                const header = $('.header');
+                if ($(this).scrollTop() > 50) {
+                    header.addClass('scrolled');
+                } else {
+                    header.removeClass('scrolled');
+                }
+            });
 
-        // 移动端导航菜单切换
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+            // 移动端导航菜单切换
+            $('#hamburger').click(function() {
+                $('#navMenu').toggleClass('active');
+                const icon = $('#navMenu').hasClass('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+                $(this).html(icon);
+            });
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.innerHTML = navMenu.classList.contains('active')
-                ? '<i class="fas fa-times"></i>'
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        // 点击导航链接关闭菜单
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            // 点击导航链接关闭菜单
+            $('#navMenu a').click(function() {
+                $('#navMenu').removeClass('active');
+                $('#hamburger').html('<i class="fas fa-bars"></i>');
             });
         });
     </script>

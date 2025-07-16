@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,7 +76,8 @@
             position: relative;
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
+        .nav-menu a:hover,
+        .nav-menu a.active {
             color: #4a9df7;
         }
 
@@ -90,15 +92,16 @@
             transition: width 0.3s ease;
         }
 
-        .nav-menu a:hover::after, .nav-menu a.active::after {
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
             width: 100%;
         }
 
         /* Banner */
         .patent-banner {
             height: 300px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                         url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -512,7 +515,7 @@
             transition: all 0.3s;
         }
 
-        .page-btn.active, 
+        .page-btn.active,
         .page-btn:hover {
             background: #4a9df7;
             color: white;
@@ -659,14 +662,14 @@
             .patent-container {
                 flex-direction: column;
             }
-            
+
             .sidebar {
                 width: 100%;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-            
+
             .tech-advantage {
                 padding: 30px 20px;
             }
@@ -678,19 +681,19 @@
                 align-items: flex-start;
                 gap: 15px;
             }
-            
+
             .sidebar {
                 grid-template-columns: 1fr;
             }
-            
+
             .banner-content h1 {
                 font-size: 36px;
             }
-            
+
             .banner-content p {
                 font-size: 18px;
             }
-            
+
             .patent-footer {
                 flex-direction: column;
                 align-items: flex-start;
@@ -702,25 +705,26 @@
             .nav-menu {
                 display: none;
             }
-            
+
             .logo {
                 font-size: 24px;
             }
-            
+
             .patent-title {
                 font-size: 20px;
             }
-            
+
             .subscribe-form {
                 flex-direction: column;
             }
-            
+
             .section-title h2 {
                 font-size: 28px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- 导航 -->
     <div class="header">
@@ -752,125 +756,75 @@
         <!-- 专利列表 -->
         <div class="patent-list">
             <div class="list-header">
-                <h2>专利库 (128项)</h2>
+                <h2>专利库 (3项)</h2>
             </div>
-            
+
             <!-- 专利项 1 -->
             <div class="patent-item">
                 <div class="patent-header">
-                    <div class="patent-id">CN202310567890.1A</div>
+                    <div class="patent-id">ZLXDX250246</div>
                     <div class="patent-date"><i class="far fa-calendar"></i> 2023-05-20</div>
                 </div>
-                <h3 class="patent-title">基于人工智能的智能家居行为预测系统及方法</h3>
+                <h3 class="patent-title">一种带摄像头检测的共享充电宝</h3>
                 <div class="patent-meta">
-                    <div class="patent-category">人工智能</div>
-                    <div class="patent-category">智能家居</div>
-                    <div class="patent-status">已授权</div>
+                    <div class="patent-category">外观</div>
+                    <div class="patent-status">已受理</div>
                 </div>
                 <p class="patent-abstract">
-                    本发明公开了一种基于人工智能的智能家居行为预测系统及方法，通过深度学习模型分析用户历史行为数据，预测用户习惯并自动调整家居设备状态。系统包括数据采集模块、特征提取模块、行为预测模块和设备控制模块...
+                    一种带摄像头检测的共享充电宝
                 </p>
                 <div class="patent-footer">
-                    <div class="patent-applicants">发明人: 张伟、李娜、王明等</div>
-                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <div class="patent-applicants">发明人: 陈荷申,韦坪松</div>
+                    <!-- <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a> -->
                 </div>
             </div>
-            
+
             <!-- 专利项 2 -->
             <div class="patent-item">
                 <div class="patent-header">
                     <div class="patent-id">US2023156789A1</div>
                     <div class="patent-date"><i class="far fa-calendar"></i> 2023-04-15</div>
                 </div>
-                <h3 class="patent-title">低功耗蓝牙Mesh网络在智能家居中的通信优化方法</h3>
+                <h3 class="patent-title">探测器</h3>
                 <div class="patent-meta">
-                    <div class="patent-category">物联网</div>
+                    <div class="patent-category">外观</div>
                     <div class="patent-category">通信技术</div>
-                    <div class="patent-status">已授权</div>
+                    <div class="patent-status">已申请</div>
                 </div>
                 <p class="patent-abstract">
-                    本专利涉及一种低功耗蓝牙Mesh网络在智能家居中的通信优化方法，通过动态调整节点传输功率和路由选择算法，显著降低整体网络能耗，提高数据传输可靠性。该技术已应用于安维深智能家居中枢系统...
+                    探测器
                 </p>
                 <div class="patent-footer">
-                    <div class="patent-applicants">发明人: 陈华、刘强、赵敏等</div>
-                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <div class="patent-applicants">发明人: 陈荷申</div>
+                    <!-- <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a> -->
                 </div>
             </div>
-            
+
             <!-- 专利项 3 -->
             <div class="patent-item">
                 <div class="patent-header">
-                    <div class="patent-id">JP2023501234A</div>
+                    <div class="patent-id">2025302604378
+                    </div>
                     <div class="patent-date"><i class="far fa-calendar"></i> 2023-03-08</div>
                 </div>
-                <h3 class="patent-title">多模态生物特征融合的智能门锁身份认证系统</h3>
+                <h3 class="patent-title">一种带摄像头检测的共享充电宝
+                </h3>
                 <div class="patent-meta">
-                    <div class="patent-category">生物识别</div>
                     <div class="patent-category">安全技术</div>
-                    <div class="patent-status">实质审查</div>
+                    <div class="patent-status">已申请</div>
                 </div>
                 <p class="patent-abstract">
-                    本发明提供了一种多模态生物特征融合的智能门锁身份认证系统，结合人脸识别、指纹识别和声纹识别技术，采用多级融合策略提高识别准确率与安全性。系统误识率低于0.0001%，支持活体检测...
+                    一种带摄像头检测的共享充电宝
                 </p>
                 <div class="patent-footer">
-                    <div class="patent-applicants">发明人: 王涛、林芳、郑凯</div>
-                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <div class="patent-applicants">发明人: 陈荷申,韦坪松
+                    </div>
+                    <!-- <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a> -->
                 </div>
             </div>
-            
-            <!-- 专利项 4 -->
-            <div class="patent-item">
-                <div class="patent-header">
-                    <div class="patent-id">CN202298765432.5B</div>
-                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-02-22</div>
-                </div>
-                <h3 class="patent-title">基于边缘计算的智能家居数据隐私保护方法及系统</h3>
-                <div class="patent-meta">
-                    <div class="patent-category">边缘计算</div>
-                    <div class="patent-category">数据安全</div>
-                    <div class="patent-status">已授权</div>
-                </div>
-                <p class="patent-abstract">
-                    本专利提出了一种基于边缘计算的智能家居数据隐私保护方法，通过在本地设备进行数据预处理和特征提取，仅传输必要信息至云端，大幅减少隐私数据泄露风险。系统支持差分隐私和同态加密技术...
-                </p>
-                <div class="patent-footer">
-                    <div class="patent-applicants">发明人: 杨帆、周杰、吴晓</div>
-                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <!-- 专利项 5 -->
-            <div class="patent-item">
-                <div class="patent-header">
-                    <div class="patent-id">EP4123456A1</div>
-                    <div class="patent-date"><i class="far fa-calendar"></i> 2023-01-18</div>
-                </div>
-                <h3 class="patent-title">自适应环境光照的智能照明系统及其控制方法</h3>
-                <div class="patent-meta">
-                    <div class="patent-category">智能照明</div>
-                    <div class="patent-category">环境感知</div>
-                    <div class="patent-status">已授权</div>
-                </div>
-                <p class="patent-abstract">
-                    本发明涉及一种自适应环境光照的智能照明系统，通过多传感器融合技术实时监测环境光照强度和色温，结合用户偏好和活动模式，自动调节灯光参数以提供最佳照明环境，同时降低能耗30%以上...
-                </p>
-                <div class="patent-footer">
-                    <div class="patent-applicants">发明人: 黄伟、孙静、钱浩</div>
-                    <a href="#" class="view-details">查看详情 <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <!-- 分页 -->
-            <div class="pagination">
-                <a href="#" class="page-btn disabled"><i class="fas fa-chevron-left"></i></a>
-                <a href="#" class="page-btn active">1</a>
-                <a href="#" class="page-btn">2</a>
-                <a href="#" class="page-btn">3</a>
-                <a href="#" class="page-btn">4</a>
-                <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
-            </div>
+
         </div>
-        
+
         <!-- 侧边栏 -->
         <div class="sidebar">
             <!-- 专利统计 -->
@@ -878,57 +832,31 @@
                 <div class="card-header">专利统计</div>
                 <div class="patent-stats">
                     <div class="stat-card">
-                        <div class="stat-value">128</div>
+                        <div class="stat-value">3</div>
                         <div class="stat-label">总专利数</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">96</div>
+                        <div class="stat-value">1</div>
                         <div class="stat-label">已授权</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">28</div>
+                        <div class="stat-value">2</div>
                         <div class="stat-label">申请中</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">4</div>
+                        <div class="stat-value">0</div>
                         <div class="stat-label">PCT国际</div>
                     </div>
                 </div>
             </div>
-            
-            
-            <!-- 热门专利 -->
-            <div class="sidebar-card">
-                <div class="card-header">热门专利</div>
-                <div class="categories-list">
-                    <a href="#" class="category-item">
-                        <span>多模态生物特征融合认证系统</span>
-                        <span><i class="fas fa-eye"></i> 1280</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <span>智能家居行为预测算法</span>
-                        <span><i class="fas fa-eye"></i> 1124</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <span>低功耗蓝牙Mesh网络优化</span>
-                        <span><i class="fas fa-eye"></i> 986</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <span>边缘计算数据隐私保护</span>
-                        <span><i class="fas fa-eye"></i> 845</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <span>自适应环境照明系统</span>
-                        <span><i class="fas fa-eye"></i> 792</span>
-                    </a>
-                </div>
-            </div>
+
+
         </div>
     </div>
-    
 
-    
-    
+
+
+
     <!-- 底部 -->
     <div class="footer">
         <div class="container">
@@ -980,27 +908,27 @@
         // 搜索功能
         const searchInput = document.querySelector('.search-input');
         const searchBtn = document.querySelector('.search-btn');
-        
-        searchBtn.addEventListener('click', function() {
+
+        searchBtn.addEventListener('click', function () {
             if (searchInput.value.trim() !== '') {
                 alert(`正在搜索专利: "${searchInput.value}"`);
                 // 实际项目中会执行搜索请求
             }
         });
-        
-        searchInput.addEventListener('keypress', function(e) {
+
+        searchInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter' && searchInput.value.trim() !== '') {
                 alert(`正在搜索专利: "${searchInput.value}"`);
                 // 实际项目中会执行搜索请求
             }
         });
-        
+
         // 订阅表单提交
         const subscribeForm = document.querySelector('.subscribe-form');
-        subscribeForm.addEventListener('submit', function(e) {
+        subscribeForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const emailInput = this.querySelector('.subscribe-input');
-            
+
             if (emailInput.value.trim() !== '') {
                 // 显示成功消息
                 alert(`感谢订阅！技术白皮书将发送至: ${emailInput.value}`);
@@ -1009,30 +937,31 @@
                 alert('请输入有效的电子邮箱地址！');
             }
         });
-        
+
         // 专利项悬停效果
         const patentItems = document.querySelectorAll('.patent-item');
         patentItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
+            item.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-5px)';
             });
-            
-            item.addEventListener('mouseleave', function() {
+
+            item.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0)';
             });
         });
-        
+
         // 专利统计卡片效果
         const statCards = document.querySelectorAll('.stat-card');
         statCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-5px)';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0)';
             });
         });
     </script>
 </body>
+
 </html>

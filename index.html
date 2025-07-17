@@ -1556,6 +1556,76 @@
                 display: block;
             }
         }
+
+        /* 新增的二维码样式 */
+        .qrcode-popup {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .qrcode {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) scale(0.8);
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .qrcode::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: white transparent transparent;
+        }
+        
+        .qrcode img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        
+        .qrcode-popup:hover .qrcode {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        
+        .qrcode-title {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .qrcode {
+                width: 120px;
+                height: 120px;
+            }
+        }
     </style>
 </head>
 
@@ -2067,9 +2137,26 @@
                         <li><i class="fas fa-phone"></i> 4006766678</li>
                         <li><i class="fas fa-envelope"></i> 472322318@qq.com</li>
                         <li>
-                            <div style="display: flex; gap: 20px; margin-top: 20px;">
-                                <a href="#" style="font-size: 24px;"><i class="fab fa-weixin"></i></a>
-                                <a href="#" style="font-size: 24px;"><i class="fab fa-weibo"></i></a>
+                            <div class="social-icons">
+                                <!-- 微信二维码 -->
+                                <div class="qrcode-popup">
+                                    <a href="#" style="font-size: 24px;">
+                                        <i class="fab fa-weixin"></i>
+                                    </a>
+                                    <div class="qrcode">
+                                        <img src="./image/qr.jpg" alt="微信二维码">
+                                    </div>
+                                </div>
+                                
+                                <!-- 微博二维码 -->
+                                <div class="qrcode-popup">
+                                    <a href="#" style="font-size: 24px;">
+                                        <i class="fab fa-weibo"></i>
+                                    </a>
+                                    <div class="qrcode">
+                                        <img src="./image/wb.jpg" alt="微博二维码">
+                                    </div>
+                                </div>
                             </div>
                         </li>
                     </ul>

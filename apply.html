@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>加入我们 - 安维深科技</title>
+    <title>成为安维深合作伙伴</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- 引入jQuery库 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         * {
@@ -418,8 +417,37 @@
             transform: translateX(5px);
         }
 
-        /* 其他样式保持不变 */
-        /* ... 省略部分重复样式 ... */
+        /* 响应面板 */
+        .response-panel {
+            background: #f0f7ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid #4a9df7;
+        }
+
+        .response-panel h3 {
+            color: #2a71d2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .response-panel pre {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.5;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .required {
+            color: #ff4d4f;
+        }
 
         /* 响应式设计 */
         @media (max-width: 992px) {
@@ -476,7 +504,8 @@
     <div class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="./image/logo.png" alt="安维深科技">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='55' viewBox='0 0 24 24'%3E%3Cpath fill='%234a9df7' d='M12 2L2 7l10 5l10-5l-10-5zM2 17l10 5l10-5M2 12l10 5l10-5'/%3E%3C/svg%3E"
+                    alt="安维深科技">
                 安维深科技
             </div>
             <ul class="nav-menu" id="navMenu">
@@ -499,7 +528,6 @@
 
     <!-- 主内容区 -->
     <div class="join-container">
-
         <!-- 申请表单 -->
         <div class="form-section">
             <div class="form-header">
@@ -522,8 +550,8 @@
                     </div>
 
                     <div class="form-group region-selector">
-                        <label for="region">所在地区 <span class="required">*</span></label>
-                        <div class="form-control" id="region" readonly>
+                        <label for="address">所在地区 <span class="required">*</span></label>
+                        <div class="form-control" id="address" readonly>
                             请选择省/市
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -537,6 +565,8 @@
                         </div>
                     </div>
 
+
+
                     <div class="form-group">
                         <label>已选择地区：<span id="selectedRegion" class="selected-region">未选择</span></label>
                     </div>
@@ -549,60 +579,8 @@
         </div>
     </div>
 
-    <!-- jQuery实现 -->
     <script>
         $(document).ready(function () {
-            // 表单提交处理
-            $('#partnerForm').on('submit', function (e) {
-                e.preventDefault();
-
-                // 获取表单数据
-                const contactName = $('#contactName').val();
-                const phone = $('#phone').val();
-                const region = $('#region').text();
-
-                // 验证地区是否已选择
-                if (region === "请选择省/市") {
-                    alert("请选择所在地区");
-                    return;
-                }
-                var url = 'https://houseapi.sanxiang.online/app/application';
-                var requestData = {
-                    "id": null,
-                    "contactPerson": "张三4",
-                    "contactPhone": "18831603313",
-                    "contactEmail": null,
-                    "address": "北京市海淀区清华大写11号楼一单元103号11111111111111",
-                    "metadata": null,
-                    "createdTime": null,
-                    "updatedTime": "2025-07-18",
-                    "createdBy": null,
-                    "updatedBy": null
-                };
-                // 发起 POST 请求
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    contentType: 'application/json', // 设置请求头为 JSON 格式
-                    data: JSON.stringify(requestData), // 将对象转换为 JSON 字符串
-                    success: function (response) {
-                        console.log('请求成功:', response);
-                        alert('请求成功，响应已打印在控制台');
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('请求失败:', status, error);
-                        alert('请求失败，请查看控制台日志');
-                    }
-                });
-                // 显示成功消息
-                alert(`感谢您的申请，${contactName}！\n我们已收到您的合作伙伴申请，我们的团队将尽快通过${phone}与您联系。`);
-
-                // 重置表单
-                $(this).trigger('reset');
-                $('#region').text('请选择省/市');
-                $('#selectedRegion').text('未选择');
-            });
-
             // 省市数据
             const regionData = [
                 { name: "北京市", cities: ["北京市"] },
@@ -659,7 +637,7 @@
             });
 
             // 点击地区选择框
-            $('#region').on('click', function (e) {
+            $('#address').on('click', function (e) {
                 e.stopPropagation();
                 $('.region-dropdown').toggleClass('active');
                 $('.region-dropdown .province i').css('transform', 'rotate(0deg)');
@@ -672,9 +650,10 @@
             $('#regionList li.city').on('click', function () {
                 const province = $(this).data('province');
                 const city = $(this).text();
-                $('#region').text(`${province} ${city}`);
+                $('#address').text(`${province} ${city}`);
                 $('#selectedRegion').text(`${province} ${city}`);
                 $('.region-dropdown').removeClass('active');
+                updateRequestData();
             });
 
             // 点击省份展开/折叠
@@ -731,6 +710,80 @@
                     $('.region-dropdown').removeClass('active');
                 }
             });
+
+            // 表单输入变化时更新requestData
+            $('#contactName, #phone').on('input', updateRequestData);
+
+            // 更新requestData函数
+            function updateRequestData() {
+                const contactName = $('#contactName').val();
+                const phone = $('#phone').val();
+                const address = $('#address').text();
+
+
+                const requestData = {
+                    "contactPerson": contactName,
+                    "contactPhone": phone,
+                    "address": address,
+                };
+
+                // 美化JSON输出
+                $('#requestDataOutput').text(JSON.stringify(requestData, null, 4));
+            }
+
+            // 表单提交处理
+            $('#partnerForm').on('submit', function (e) {
+                e.preventDefault();
+
+                // 获取表单数据
+                const contactName = $('#contactName').val();
+                const phone = $('#phone').val();
+                const address = $('#address').text();
+
+                // 验证必填字段
+                if (!contactName || !phone || address === "请选择省/市") {
+                    alert("请填写所有必填字段");
+                    return;
+                }
+
+
+
+                // 构造请求数据
+                const requestData = {
+                    "contactPerson": contactName,
+                    "contactPhone": phone,
+                    "address": address,
+                };
+
+
+
+                // 在实际应用中，这里会发起AJAX请求
+                var url = 'https://houseapi.sanxiang.online/app/application';
+                console.log('提交数据:', requestData);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json', // 设置请求头为 JSON 格式
+                    data: JSON.stringify(requestData), // 将对象转换为 JSON 字符串
+                    success: function (response) {
+                        console.log('请求成功:', response);
+                        alert(`感谢您的申请，${contactName}！\n我们已收到您的合作伙伴申请，我们的团队将尽快通过${phone}与您联系。`);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('请求失败:', status, error);
+                        alert('请求失败，请查看控制台日志');
+                    }
+                });
+
+                // 重置表单
+                $(this).trigger('reset');
+                $('#address').text('请选择省/市');
+                $('#selectedRegion').text('未选择');
+                updateRequestData();
+            });
+
+            // 初始更新requestData
+            updateRequestData();
         });
     </script>
 </body>
